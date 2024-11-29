@@ -1,50 +1,52 @@
-# React + TypeScript + Vite
+# X.Ryder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+这是一个基于vite、react、tailwindcss和shadcn的中后台ui快速开发模板。
 
-Currently, two official plugins are available:
+## 使用的组件
+- 状态管理：zustand
+- 路由使用：react-router-dom
+- 样式ui使用 [tailwindcss](https://tailwindcss.com/docs/installation) + [shadcn/ui](https://ui.shadcn.com/)
+- icon: [react-icons](https://react-icons.github.io/react-icons/)和[lucide](https://lucide.dev/icons/)
+- 网络请求使用:axios
+- 表单参数校验：zod 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 运行
+```shell
+npm install
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+## 打包
+```shell
+npm run build
 ```
+
+### Todo
+- [x] 登录、token刷新、多次登录失败锁定
+- [x] 深色模式
+- [x] 国际化
+- [x] 用户管理
+- [x] 角色管理、权限校验
+- [x] 部门管理
+- [x] 操作日志
+- [x] 登录日志
+- [x] 账户管理、头像修改、密码重置等
+- [x] 职位管理
+- [x] 通知公告
+- [ ] 用户信息页
+
+## 参与开发
+1. 创建一个本地分支
+    ```git
+      git checkout -b my-new-branch
+    ```
+2. 提交你的修改
+    ```shell
+    git commit -a -m 'Description of the changes'
+    ```
+3. 推送你的分支到远程仓库
+    ```shell
+    git push origin my-new-branch
+    ```
+4. 去到远程仓库发起合并请求

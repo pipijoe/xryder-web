@@ -2,20 +2,17 @@
 
 import * as React from "react"
 import {
-    AudioWaveform,
     BookOpen,
-    Bot,
-    Command,
-    Frame,
-    GalleryVerticalEnd,
-    Map,
-    PieChart,
+    Bot, Building2, CircleEllipsis,
+    ContactRound, Crown,
+    GalleryVerticalEnd, Mail,
+    RectangleEllipsis,
     Settings2,
-    SquareTerminal,
+    SquareTerminal, UserRoundCog, X,
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
+import { NavSystem } from "@/components/nav-system"
 import { NavUser } from "@/components/nav-user"
 import {
     Sidebar,
@@ -25,7 +22,6 @@ import {
     SidebarRail,
 } from "@/components/ui/sidebar"
 
-// This is sample data.
 const data = {
     user: {
         name: "shadcn",
@@ -119,21 +115,41 @@ const data = {
             ],
         },
     ],
-    projects: [
+    system: [
         {
-            name: "Design Engineering",
-            url: "#",
-            icon: Frame,
+            name: "用户管理",
+            url: "/sys/users",
+            icon: UserRoundCog,
         },
         {
-            name: "Sales & Marketing",
-            url: "#",
-            icon: PieChart,
+            name: "角色管理",
+            url: "/sys/roles",
+            icon: ContactRound,
         },
         {
-            name: "Travel",
-            url: "#",
-            icon: Map,
+            name: "部门管理",
+            url: "/sys/department",
+            icon: Building2,
+        },
+        {
+            name: "职位管理",
+            url: "/sys/position",
+            icon: Crown,
+        },
+        {
+            name: "邮件通知",
+            url: "/sys/mail",
+            icon: Mail,
+        },
+        {
+            name: "操作日志",
+            url: "/sys/log",
+            icon: CircleEllipsis,
+        },
+        {
+            name: "登录日志",
+            url: "/sys/login-log",
+            icon: RectangleEllipsis,
         },
     ],
 }
@@ -147,7 +163,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                         <SidebarMenuButton size="lg" asChild>
                             <a href="#">
                                 <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                                    <GalleryVerticalEnd className="size-4" />
+                                    X.R
                                 </div>
                                 <div className="flex flex-row gap-0.5 leading-none">
                                     <span className="text-2xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent">X.Ryder</span>
@@ -160,7 +176,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             </SidebarHeader>
             <SidebarContent>
                 <NavMain items={data.navMain} />
-                <NavProjects projects={data.projects} />
+                <NavSystem projects={data.system} />
             </SidebarContent>
             <SidebarFooter>
                 <NavUser user={data.user} />
