@@ -9,6 +9,7 @@
 - icon: [react-icons](https://react-icons.github.io/react-icons/)和[lucide](https://lucide.dev/icons/)
 - 网络请求使用:axios
 - 表单参数校验：zod 
+- 动效：framer-motion
 
 ## 运行
 ```shell

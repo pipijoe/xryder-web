@@ -11,6 +11,7 @@ import Position from "@/page/system/position";
 import Index from "@/page/system/mail";
 import Log from "@/page/system/log";
 import LoginLog from "@/page/system/login";
+import Login from "@/Login";
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
                 <Router>
                     <Layout>
                         <Routes>
+                            <Route path="/login" element={<Login />} />
                             <Route path="/" element={<Dashboard/>}/>
                             <Route path="/sys/users" element={<User/>}/>
                             <Route path="/sys/roles" element={<Role/>}/>
