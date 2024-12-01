@@ -73,7 +73,7 @@ function Login() {
                     <div>
                         <BoxReveal boxColor={"#0EA5E9"} duration={0.5}>
                             <p className="text-[3.5rem] font-semibold">
-                                <span className="text-[#5046e6]">一款清爽、美观、附带AI的WEB开发框架</span>
+                                <span className="text-[#5046e6]">一款清爽、美观、附带AI的WEB开发模板</span>
                             </p>
                         </BoxReveal>
 
@@ -99,7 +99,7 @@ function Login() {
                                     -&gt; 后端基于<span className="font-semibold text-[#0EA5E9]">Java 21</span>
                                     ，<span className="font-semibold text-[#0EA5E9]">Spring Boot</span>
                                     ，<span className="font-semibold text-[#0EA5E9]">MySQL</span>
-                                    <span className="font-semibold text-[#0EA5E9]">SpringData JPA</span>开发的后台程序。
+                                    ，<span className="font-semibold text-[#0EA5E9]">SpringData JPA</span>开发的后台程序。
                                     <br/>
                                     -&gt; 可以作为<span className="font-semibold text-[#0EA5E9]">业务系统</span>
                                     和<span
