@@ -1,6 +1,8 @@
 import logo from '../assets/logo.png'
+import empty from '../assets/empty.png'
 
 export const logoImg = logo
+export const emptyImg = empty
 
 import { JSEncrypt } from 'jsencrypt';
 

@@ -107,8 +107,8 @@ const MailBox = () => {
                         </Tabs>
                     </div>
                     <div className="relative">
-                        <ScrollArea className={'h-[calc(100vh-200px)]'}>
-                            <div className="pt-4 space-y-2">
+                        <ScrollArea className={'h-[calc(100vh-80px)]'}>
+                            <div className="container grid gap-2 p-4">
                                 {mails.length == 0 && <p className="text-center text-muted-foreground">没有未读邮件</p>}
                                 {mails.map((mail) => (
                                     <Card

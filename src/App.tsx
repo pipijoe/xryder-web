@@ -8,12 +8,13 @@ import User from "@/page/system/user";
 import Role from "@/page/system/role";
 import Department from "@/page/system/department";
 import Position from "@/page/system/position";
-import Index from "@/page/system/mail";
+import SendingMails from "@/page/system/mail";
 import Log from "@/page/system/log";
 import LoginLog from "@/page/system/login";
 import Login from "@/Login";
 import MailBox from "@/page/mailbox";
 import Account from "@/page/account";
+import MailSender from "@/page/system/mail/MailSender";
 
 function App() {
 
@@ -29,7 +30,8 @@ function App() {
                             <Route path="/sys/roles" element={<Role/>}/>
                             <Route path="/sys/department" element={<Department/>}/>
                             <Route path="/sys/position" element={<Position/>}/>
-                            <Route path="/sys/mail" element={<Index/>}/>
+                            <Route path="/sys/mail" element={<SendingMails/>}/>
+                            <Route path="/sys/mail/send" element={<MailSender/>}/>
                             <Route path="/sys/log" element={<Log/>}/>
                             <Route path="/sys/login-log" element={<LoginLog/>}/>
                             <Route path="/mail" element={<MailBox />} />

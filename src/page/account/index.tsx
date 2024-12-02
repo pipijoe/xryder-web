@@ -193,7 +193,7 @@ const Account = () => {
                 </div>
             </header>
             <ScrollArea className={'h-[calc(100vh-80px)]'}>
-                <div className="w-full max-w-6xl p-4 ">
+                <div className="container grid gap-2 p-4">
                     <Card>
                         <CardHeader>
                             <CardTitle>账户设置</CardTitle>
