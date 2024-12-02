@@ -1,6 +1,6 @@
 # X.Ryder
 ## 简介
-这是一个基于vite、react、tailwindcss和shadcn的中后台ui快速开发模板。  
+这是一个基于vite、react、tailwindcss和shadcn的中后台ui快速开发模板。搭配[xryder-server](https://github.com/pipijoe/xryder-server)这个基于Spring Boot的后台程序,可快速构建一个中后台系统的基础代码开发框架。
 
 演示系统地址：[X.Ryder](https://xryder.cn)  
 账号：admin  
