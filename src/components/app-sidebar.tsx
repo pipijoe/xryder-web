@@ -92,65 +92,52 @@ const data = {
             ],
         },
         {
-            title: "Settings",
+            title: "系统管理",
             url: "#",
             icon: Settings2,
             items: [
                 {
-                    title: "General",
-                    url: "#",
+                    title: "用户管理",
+                    url: "/sys/users",
                 },
                 {
-                    title: "Team",
-                    url: "#",
+                    title: "角色管理",
+                    url: "/sys/roles",
                 },
                 {
-                    title: "Billing",
-                    url: "#",
+                    title: "部门管理",
+                    url: "/sys/department",
                 },
                 {
-                    title: "Limits",
-                    url: "#",
+                    title: "职位管理",
+                    url: "/sys/position",
+                },
+                {
+                    title: "邮件通知",
+                    url: "/sys/mail",
+                },
+                {
+                    title: "操作日志",
+                    url: "/sys/log",
+                },
+                {
+                    title: "登录日志",
+                    url: "/sys/login-log",
                 },
             ],
         },
     ],
-    system: [
+    projects: [
         {
-            name: "用户管理",
-            url: "/sys/users",
-            icon: UserRoundCog,
-        },
-        {
-            name: "角色管理",
-            url: "/sys/roles",
+            name: "project 1",
+            url: "#",
             icon: ContactRound,
         },
         {
-            name: "部门管理",
-            url: "/sys/department",
-            icon: Building2,
-        },
-        {
-            name: "职位管理",
-            url: "/sys/position",
-            icon: Crown,
-        },
-        {
-            name: "邮件通知",
-            url: "/sys/mail",
-            icon: Mail,
-        },
-        {
-            name: "操作日志",
-            url: "/sys/log",
-            icon: CircleEllipsis,
-        },
-        {
-            name: "登录日志",
-            url: "/sys/login-log",
-            icon: RectangleEllipsis,
-        },
+            name: "project 2",
+            url: "#",
+            icon: ContactRound,
+        }
     ],
 }
 
@@ -174,9 +161,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                     </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarHeader>
-            <SidebarContent>
+            <SidebarContent className={'custom-scrollbar'}>
                 <NavMain items={data.navMain} />
-                <NavSystem projects={data.system} />
+                <NavSystem projects={data.projects} />
             </SidebarContent>
             <SidebarFooter>
                 <NavUser user={data.user} />

@@ -47,8 +47,8 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 240 5.9% 12%;
+    --foreground: 240 4.8% 93.9%;
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
     --popover: 222.2 84% 4.9%;
@@ -73,6 +73,32 @@
     --chart-5: 340 75% 55%;
   }
 }
+
+/* 自定义滚动条样式 */
+.custom-scrollbar {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #6b7280 #e5e7eb; /* 滚动条颜色（前景色，背景色） */
+}
+
+/* Chrome 和 Safari */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px; /* 滚动条宽度 */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent; /* 设置轨道背景为透明 */
+
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #6b7280; /* 滚动条颜色 */
+  border-radius: 8px; /* 圆角 */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #6b7280; /* 悬停时的滚动条颜色 */
+}
+
 @layer base {
   * {
     @apply border-border;

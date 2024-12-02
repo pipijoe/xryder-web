@@ -1,12 +1,12 @@
 "use client"
 
 import {
-    BadgeCheck,
+    BadgeCheck, BadgeInfo,
     Bell,
     ChevronsUpDown,
-    CreditCard,
+    CreditCard, Headset,
     LogOut,
-    Sparkles,
+    Sparkles, UserCog,
 } from "lucide-react"
 
 import {
@@ -29,18 +29,27 @@ import {
     SidebarMenuItem,
     useSidebar,
 } from "@/components/ui/sidebar"
+import {useDialog} from "@/components/use-dialog";
+import {logoImg} from '@/utils'
+
+import {DialogContent, DialogDescription, DialogHeader, DialogTitle} from "@/components/ui/dialog";
+import {Dialog} from "@radix-ui/react-dialog";
 
 export function NavUser({
                             user,
+                            logout
                         }: {
     user: {
         name: string
         email: string
         avatar: string
-    }
+    },
+    logout
 }) {
     const { isMobile } = useSidebar()
+    const aboutDialog = useDialog(null);
 
+    const supportDialog = useDialog(null);
     return (
         <SidebarMenu>
             <SidebarMenuItem>
@@ -82,33 +91,57 @@ export function NavUser({
                         <DropdownMenuSeparator />
                         <DropdownMenuGroup>
                             <DropdownMenuItem>
-                                <Sparkles />
-                                Upgrade to Pro
+                                <UserCog className={'size-4 mr-2'}/>
+                                账户设置
                             </DropdownMenuItem>
                         </DropdownMenuGroup>
                         <DropdownMenuSeparator />
                         <DropdownMenuGroup>
-                            <DropdownMenuItem>
-                                <BadgeCheck />
-                                Account
+                            <DropdownMenuItem {...supportDialog.triggerProps}>
+                                <Headset className={'size-4 mr-2'}/>
+                                技术支持
+                            </DropdownMenuItem>
+                            <DropdownMenuItem  {...aboutDialog.triggerProps}>
+                                <BadgeInfo className={'size-4 mr-2'}/>
+                                关 于
                             </DropdownMenuItem>
                             <DropdownMenuItem>
-                                <CreditCard />
-                                Billing
-                            </DropdownMenuItem>
-                            <DropdownMenuItem>
-                                <Bell />
-                                Notifications
+                                <Bell className={'size-4 mr-2'}/>
+                                通 知
                             </DropdownMenuItem>
                         </DropdownMenuGroup>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>
-                            <LogOut />
-                            Log out
+                        <DropdownMenuItem onClick={logout}>
+                            <LogOut className={'size-4 mr-2'}/>
+                            登 出
                         </DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
             </SidebarMenuItem>
+            <Dialog {...aboutDialog.dialogProps} >
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle><BadgeInfo className={'text-sky-500 inline mr-2 mb-1'}/>X.Ryder</DialogTitle>
+                        <DialogDescription>
+                            一个基于vite、react、tailwindcss和shadcn的中后台ui快速开发模板。
+                        </DialogDescription>
+                    </DialogHeader>
+                    <div className="container mx-auto text-center">
+                        <img src={logoImg} alt={"logo"} className="mx-auto mb-4 w-20 h-auto"/>
+                        <p className="text-sm">&copy; {new Date().getFullYear()} X.Ryder.</p>
+                    </div>
+                </DialogContent>
+            </Dialog>
+            <Dialog {...supportDialog.dialogProps} >
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle><Headset className={'text-sky-500 inline mr-2 mb-1'}/>技术支持</DialogTitle>
+                        <DialogDescription>
+                            发送问题邮件至cutesimba@163.com,备注xryder.cn
+                        </DialogDescription>
+                    </DialogHeader>
+                </DialogContent>
+            </Dialog>
         </SidebarMenu>
     )
 }

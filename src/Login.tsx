@@ -116,7 +116,7 @@ function Login() {
                 <div className='flex justify-center items-center h-[calc(100vh_-_theme(spacing.8))]'>
                     <Card className="mx-auto max-w-sm z-10 shadow-2xl">
                         <CardHeader className="text-center w-96 items-center mt-6">
-                            {/*<img src={logoImg} alt={"logo"} className="w-16 mb-2"/>*/}
+                            <img src={logoImg} alt={"logo"} className="w-16 mb-2 shadow-2xl"/>
                             <CardTitle className={'text-3xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent'}>X.Ryder</CardTitle>
                         </CardHeader>
                         <CardContent>
