@@ -1,6 +1,10 @@
 # X.Ryder
+## 简介
+这是一个基于vite、react、tailwindcss和shadcn的中后台ui快速开发模板。  
 
-这是一个基于vite、react、tailwindcss和shadcn的中后台ui快速开发模板。
+演示系统地址：[X.Ryder](https://xryder.cn)  
+账号：admin  
+密码：admin123
 
 ## 使用的组件
 - 状态管理：zustand
