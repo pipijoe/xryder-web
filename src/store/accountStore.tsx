@@ -2,12 +2,12 @@ import { create } from 'zustand';
 import api from '../axiosInstance';
 import {parseQuery} from '@/utils'
 
-interface AccountState {
+export interface AccountState {
     nickname: string
     username: string
     departmentId: number,
     position: string,
-    notificationCount: number,
+    newMails: number,
     email: string
     mobile: string
     avatar: string
@@ -47,7 +47,7 @@ export const useAccountStore = create<StoreState>((set) => ({
         nickname: '',
         username: '',
         departmentId: 0,
-        notificationCount: 0,
+        newMails: 0,
         email: '',
         mobile: '',
         avatar: '',

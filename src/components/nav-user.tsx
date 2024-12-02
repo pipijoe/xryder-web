@@ -34,6 +34,7 @@ import {logoImg} from '@/utils'
 
 import {DialogContent, DialogDescription, DialogHeader, DialogTitle} from "@/components/ui/dialog";
 import {Dialog} from "@radix-ui/react-dialog";
+import {useNavigate} from "react-router-dom";
 
 export function NavUser({
                             user,
@@ -48,6 +49,7 @@ export function NavUser({
 }) {
     const { isMobile } = useSidebar()
     const aboutDialog = useDialog(null);
+    const navigate = useNavigate();
 
     const supportDialog = useDialog(null);
     return (
@@ -90,7 +92,7 @@ export function NavUser({
                         </DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <DropdownMenuGroup>
-                            <DropdownMenuItem>
+                            <DropdownMenuItem onClick={() => navigate('/account')}>
                                 <UserCog className={'size-4 mr-2'}/>
                                 账户设置
                             </DropdownMenuItem>

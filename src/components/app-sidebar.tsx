@@ -129,7 +129,7 @@ const data = {
     ],
     navSecondary: [
         {
-            title: "邮件通知",
+            title: "收件箱",
             url: "/mail",
             icon: Mail,
         }
@@ -178,7 +178,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarContent className={'custom-scrollbar'}>
                 <NavMain items={data.navMain} />
                 <NavSystem projects={data.projects} />
-                <NavSecondary items={data.navSecondary} className="mt-auto" />
+                <NavSecondary account={account} className="mt-auto" />
             </SidebarContent>
             <SidebarFooter>
                 <NavUser user={account} logout={logout}/>

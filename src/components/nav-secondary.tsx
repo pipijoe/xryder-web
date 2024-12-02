@@ -7,7 +7,7 @@
  */
 
 import * as React from "react"
-import { type LucideIcon } from "lucide-react"
+import {Mail} from "lucide-react"
 
 import {
     SidebarGroup,
@@ -16,26 +16,34 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import {AccountState} from "@/store/accountStore";
+import {NavLink} from "react-router-dom";
 
 export function NavSecondary({
-                                 items,
+                                 account,
                                  ...props
                              }: {
+    account: AccountState
 } & React.ComponentPropsWithoutRef<typeof SidebarGroup>) {
     return (
         <SidebarGroup {...props}>
             <SidebarGroupContent>
                 <SidebarMenu>
-                    {items.map((item) => (
-                        <SidebarMenuItem key={item.title}>
-                            <SidebarMenuButton asChild size="sm">
-                                <a href={item.url}>
-                                    <item.icon />
-                                    <span>{item.title}</span>
-                                </a>
-                            </SidebarMenuButton>
-                        </SidebarMenuItem>
-                    ))}
+                    <SidebarMenuItem>
+                        <SidebarMenuButton asChild size="sm">
+                            <NavLink to={'/mail'}>
+                                <Mail className='w-5 h-5'/>
+                                <span>收件箱</span>
+                                {account.newMails > 0 && (
+                                    <span
+                                        className="absolute top-1 right-0 flex h-5 w-5 items-center justify-center rounded-full bg-red-600 text-white text-xs">
+                                        {account.newMails > 100 ? "99+" : account.newMails}
+                                    </span>
+                                )}
+                            </NavLink>
+
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarGroupContent>
         </SidebarGroup>

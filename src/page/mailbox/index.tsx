@@ -73,7 +73,7 @@ const MailBox = () => {
     return (
         <div>
             <Helmet>
-                <title>{account ? `收件箱(${account.notificationCount})` : '收件箱'}</title>
+                <title>{account ? `收件箱(${account.newMails})` : '收件箱'}</title>
             </Helmet>
             <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
                 <div className="flex flex-1 items-center gap-2 px-3">

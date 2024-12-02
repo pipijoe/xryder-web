@@ -13,6 +13,7 @@ import Log from "@/page/system/log";
 import LoginLog from "@/page/system/login";
 import Login from "@/Login";
 import MailBox from "@/page/mailbox";
+import Account from "@/page/account";
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
                             <Route path="/sys/log" element={<Log/>}/>
                             <Route path="/sys/login-log" element={<LoginLog/>}/>
                             <Route path="/mail" element={<MailBox />} />
+                            <Route path="/account" element={<Account />} />
                         </Routes>
                     </Layout>
                 </Router>
