@@ -12,6 +12,7 @@ import Index from "@/page/system/mail";
 import Log from "@/page/system/log";
 import LoginLog from "@/page/system/login";
 import Login from "@/Login";
+import MailBox from "@/page/mailbox";
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
                             <Route path="/sys/mail" element={<Index/>}/>
                             <Route path="/sys/log" element={<Log/>}/>
                             <Route path="/sys/login-log" element={<LoginLog/>}/>
+                            <Route path="/mail" element={<MailBox />} />
                         </Routes>
                     </Layout>
                 </Router>

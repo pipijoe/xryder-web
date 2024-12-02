@@ -40,8 +40,8 @@ export function NavUser({
                             logout
                         }: {
     user: {
-        name: string
-        email: string
+        username: string
+        nickname: string
         avatar: string
     },
     logout
@@ -60,12 +60,12 @@ export function NavUser({
                             className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
                         >
                             <Avatar className="h-8 w-8 rounded-lg">
-                                <AvatarImage src={user.avatar} alt={user.name} />
+                                <AvatarImage src={'data:image/png;base64,' + user.avatar} alt={user.nickname} />
                                 <AvatarFallback className="rounded-lg">CN</AvatarFallback>
                             </Avatar>
                             <div className="grid flex-1 text-left text-sm leading-tight">
-                                <span className="truncate font-semibold">{user.name}</span>
-                                <span className="truncate text-xs">{user.email}</span>
+                                <span className="truncate font-semibold">{user.nickname}</span>
+                                <span className="truncate text-xs">{user.username}</span>
                             </div>
                             <ChevronsUpDown className="ml-auto size-4" />
                         </SidebarMenuButton>
@@ -79,12 +79,12 @@ export function NavUser({
                         <DropdownMenuLabel className="p-0 font-normal">
                             <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                                 <Avatar className="h-8 w-8 rounded-lg">
-                                    <AvatarImage src={user.avatar} alt={user.name} />
+                                    <AvatarImage src={'data:image/png;base64,' + user.avatar} alt={user.nickname} />
                                     <AvatarFallback className="rounded-lg">CN</AvatarFallback>
                                 </Avatar>
                                 <div className="grid flex-1 text-left text-sm leading-tight">
-                                    <span className="truncate font-semibold">{user.name}</span>
-                                    <span className="truncate text-xs">{user.email}</span>
+                                    <span className="truncate font-semibold">{user.nickname}</span>
+                                    <span className="truncate text-xs">{user.username}</span>
                                 </div>
                             </div>
                         </DropdownMenuLabel>
@@ -104,10 +104,6 @@ export function NavUser({
                             <DropdownMenuItem  {...aboutDialog.triggerProps}>
                                 <BadgeInfo className={'size-4 mr-2'}/>
                                 关 于
-                            </DropdownMenuItem>
-                            <DropdownMenuItem>
-                                <Bell className={'size-4 mr-2'}/>
-                                通 知
                             </DropdownMenuItem>
                         </DropdownMenuGroup>
                         <DropdownMenuSeparator />

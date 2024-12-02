@@ -21,13 +21,13 @@ import {
     SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem,
     SidebarRail,
 } from "@/components/ui/sidebar"
+import {useEffect} from "react";
+import {useAuthStore} from "@/store/authStore";
+import {useAccountStore} from "@/store/accountStore";
+import useSystemStore from "@/store/systemStore";
+import {NavSecondary} from "@/components/nav-secondary";
 
 const data = {
-    user: {
-        name: "shadcn",
-        email: "m@example.com",
-        avatar: "/avatars/shadcn.jpg",
-    },
     navMain: [
         {
             title: "Playground",
@@ -127,6 +127,13 @@ const data = {
             ],
         },
     ],
+    navSecondary: [
+        {
+            title: "邮件通知",
+            url: "/mail",
+            icon: Mail,
+        }
+    ],
     projects: [
         {
             name: "project 1",
@@ -142,6 +149,13 @@ const data = {
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+    const {account, getAccount} = useAccountStore();
+    const {queryDepartment} = useSystemStore()
+    const {logout} = useAuthStore()
+    useEffect(() => {
+        getAccount();
+        queryDepartment({})
+    }, [])
     return (
         <Sidebar collapsible="icon" {...props}>
             <SidebarHeader>
@@ -164,9 +178,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarContent className={'custom-scrollbar'}>
                 <NavMain items={data.navMain} />
                 <NavSystem projects={data.projects} />
+                <NavSecondary items={data.navSecondary} className="mt-auto" />
             </SidebarContent>
             <SidebarFooter>
-                <NavUser user={data.user} />
+                <NavUser user={account} logout={logout}/>
             </SidebarFooter>
             <SidebarRail />
         </Sidebar>
