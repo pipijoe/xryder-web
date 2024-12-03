@@ -6,12 +6,18 @@
 账号：admin  
 密码：admin123
 ## 系统截图
-![1](https://github.com/pipijoe/xryder-web/blob/main/src/assets/examples/wechat_2024-12-03_100104_397.png)
-![2](https://github.com/pipijoe/xryder-web/blob/main/src/assets/examples/wechat_2024-12-03_100305_969.png)
-![3](https://github.com/pipijoe/xryder-web/blob/main/src/assets/examples/wechat_2024-12-03_100324_346.png)
-![4](https://github.com/pipijoe/xryder-web/blob/main/src/assets/examples/wechat_2024-12-03_100359_310.png)
-![5](https://github.com/pipijoe/xryder-web/blob/main/src/assets/examples/wechat_2024-12-03_100411_159.png)
-![6](https://github.com/pipijoe/xryder-web/blob/main/src/assets/examples/wechat_2024-12-03_100430_003.png)
+首页
+![首页](https://github.com/pipijoe/xryder-web/blob/main/src/assets/examples/wechat_2024-12-03_100104_397.png)
+ai对话
+![ai对话](https://github.com/pipijoe/xryder-web/blob/main/src/assets/examples/wechat_2024-12-03_100305_969.png)
+用户管理
+![用户管理](https://github.com/pipijoe/xryder-web/blob/main/src/assets/examples/wechat_2024-12-03_100324_346.png)
+账户设置
+![账户设置](https://github.com/pipijoe/xryder-web/blob/main/src/assets/examples/wechat_2024-12-03_100359_310.png)
+收件箱
+![收件箱](https://github.com/pipijoe/xryder-web/blob/main/src/assets/examples/wechat_2024-12-03_100411_159.png)
+登录页
+![登录页](https://github.com/pipijoe/xryder-web/blob/main/src/assets/examples/wechat_2024-12-03_100430_003.png)
 
 ## 使用的组件
 - 状态管理：zustand
