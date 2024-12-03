@@ -7,7 +7,7 @@
  */
 
 import * as React from "react"
-import {Mail} from "lucide-react"
+import {Github, Mail} from "lucide-react"
 
 import {
     SidebarGroup,
@@ -41,7 +41,14 @@ export function NavSecondary({
                                     </span>
                                 )}
                             </NavLink>
-
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                        <SidebarMenuButton asChild size="sm">
+                            <a href={'https://github.com/pipijoe/xryder-web'} target={'_blank'}>
+                                <Github className='w-5 h-5'/>
+                                <span>GitHub</span>
+                            </a>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
                 </SidebarMenu>

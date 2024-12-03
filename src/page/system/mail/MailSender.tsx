@@ -181,7 +181,7 @@ const MailSender = () => {
                     </Breadcrumb>
                 </div>
             </header>
-            <div className={'pl-4 container grid gap-2'}>
+            <div className={'pl-4 container grid gap-2 mt-2'}>
                 <div className="flex items-center gap-4">
                     <Button variant="outline" size="icon" className="h-7 w-7" onClick={back}>
                         <ChevronLeft className="h-4 w-4"/>
