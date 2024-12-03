@@ -1,0 +1,61 @@
+/**
+ * @license MIT
+ * Created by: joetao
+ * Created on: 2024/12/3
+ * Project: xryder
+ * Description: This is a rapid development template for middle and backend UI based on vite, react, tailwindcss and shadcn.
+ */
+.markdown-body{
+    max-width: 800px; /* 指定最大宽度 */
+    overflow-x: auto; /* 当内容超过指定宽度时显示水平滚动条 */
+}
+.markdown-body h1 {
+    @apply font-semibold text-xl leading-loose;
+}
+
+.markdown-body h2 {
+    @apply font-semibold text-xl leading-loose;
+}
+
+.markdown-body h3 {
+    @apply font-semibold text-xl leading-loose;
+}
+
+.markdown-body p {
+    /*margin-top: 1.25em; !* 调整行距 *!*/
+    @apply leading-loose tracking-wider ;
+}
+
+.markdown-body ol {
+    @apply  leading-loose;
+}
+
+.markdown-body ul {
+    @apply leading-loose;
+}
+
+.markdown-body table,
+.markdown-body th,
+.markdown-body td {
+    border: 1px solid #bfbfbf;
+    padding: 4px 8px
+}
+
+.markdown-body th {
+    background-color: #595959;
+}
+
+/* 针对代码块的样式 */
+.markdown-body pre {
+    overflow-x: auto; /* 当内容超过宽度时显示水平滚动条 */
+    white-space: pre-wrap; /* 保持代码块的格式 */
+    word-wrap: break-word; /* 允许长单词换行 */
+    background-color: rgb(40, 44, 52); /* 代码块的背景颜色 */
+    padding: 16px; /* 代码块的内边距 */
+    border-radius: 6px; /* 代码块的圆角 */
+}
+
+.markdown-body code {
+    display: inline-block;
+    white-space: pre; /* 保持代码的格式 */
+}

@@ -15,6 +15,7 @@ import Login from "@/Login";
 import MailBox from "@/page/mailbox";
 import Account from "@/page/account";
 import MailSender from "@/page/system/mail/MailSender";
+import {AiChat} from "@/page/chat";
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
                             <Route path="/sys/login-log" element={<LoginLog/>}/>
                             <Route path="/mail" element={<MailBox />} />
                             <Route path="/account" element={<Account />} />
+                            <Route path="/chat" element={<AiChat />} />
                         </Routes>
                     </Layout>
                 </Router>

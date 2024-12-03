@@ -174,7 +174,7 @@ const handleForbidden = () => {
 }
 
 const handleError = () => {
-    window.location.href = '/500'
+    // window.location.href = '/500'
 }
 
 export default api;

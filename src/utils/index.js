@@ -1,9 +1,14 @@
 import logo from '../assets/logo.png'
 import empty from '../assets/empty.png'
+import file from '../assets/file.png'
+import image from '../assets/image.png'
+import agent from '../assets/agent.svg'
 
 export const logoImg = logo
 export const emptyImg = empty
-
+export const fileImg = file
+export const imageImg = image
+export const agentImg = agent
 import { JSEncrypt } from 'jsencrypt';
 
 export const encryptPassword = (password, publicKey) => {

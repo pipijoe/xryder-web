@@ -36,8 +36,8 @@ const data = {
             isActive: true,
             items: [
                 {
-                    title: "History",
-                    url: "#",
+                    title: "对话",
+                    url: "/chat",
                 },
                 {
                     title: "Starred",
@@ -168,7 +168,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                                 </div>
                                 <div className="flex flex-row gap-0.5 leading-none">
                                     <span className="text-2xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent">X.Ryder</span>
-                                    <span className="text-sm">v1.2.0</span>
+                                    <span className="text-sm">v1.1.0</span>
                                 </div>
                             </a>
                         </SidebarMenuButton>

@@ -148,7 +148,7 @@ export const useAccountStore = create<StoreState>((set) => ({
             if (data.code == 200) {
                 set((state) => ({
                     mails: state.mails.map(m => m.id === params.id ? {...m, hasRead: true} : m),
-                    account: {...state.account, notificationCount: state.account.notificationCount -1 }
+                    account: {...state.account, newMails: state.account.newMails -1 }
                 }));
             }
         } catch (error: any) {
