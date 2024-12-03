@@ -1,31 +1,28 @@
 "use client"
 
 import * as React from "react"
-import {
-    BookOpen,
-    Bot, Building2, CircleEllipsis,
-    ContactRound, Crown,
-    GalleryVerticalEnd, Mail,
-    RectangleEllipsis,
-    Settings2,
-    SquareTerminal, UserRoundCog, X,
-} from "lucide-react"
+import {useEffect} from "react"
+import {BookOpen, Bot, ContactRound, Mail, Monitor, Settings2, SquareTerminal,} from "lucide-react"
+import {v4 as uuidv4} from 'uuid';
 
-import { NavMain } from "@/components/nav-main"
-import { NavSystem } from "@/components/nav-system"
-import { NavUser } from "@/components/nav-user"
+import {NavMain} from "@/components/nav-main"
+import {NavSystem} from "@/components/nav-system"
+import {NavUser} from "@/components/nav-user"
 import {
     Sidebar,
     SidebarContent,
     SidebarFooter,
-    SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem,
+    SidebarHeader,
+    SidebarMenu,
+    SidebarMenuButton,
+    SidebarMenuItem,
     SidebarRail,
 } from "@/components/ui/sidebar"
-import {useEffect} from "react";
 import {useAuthStore} from "@/store/authStore";
 import {useAccountStore} from "@/store/accountStore";
 import useSystemStore from "@/store/systemStore";
 import {NavSecondary} from "@/components/nav-secondary";
+import {useVisitorStore} from "@/store/visitorStore";
 
 const data = {
     navMain: [
@@ -136,26 +133,38 @@ const data = {
     ],
     projects: [
         {
-            name: "project 1",
-            url: "#",
-            icon: ContactRound,
+            name: "监控",
+            url: "/monitor",
+            icon: Monitor,
         },
-        {
-            name: "project 2",
-            url: "#",
-            icon: ContactRound,
-        }
     ],
+}
+
+// 检查或生成用户唯一标识符
+function getOrCreateUUID() {
+    let userUUID = localStorage.getItem('userUUID');
+    if (!userUUID) {
+        userUUID = uuidv4(); // 生成新的 UUID
+        localStorage.setItem('userUUID', userUUID); // 存储在 localStorage
+    }
+    return userUUID;
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     const {account, getAccount} = useAccountStore();
     const {queryDepartment} = useSystemStore()
     const {logout} = useAuthStore()
+    const { visit } = useVisitorStore()
     useEffect(() => {
         getAccount();
         queryDepartment({})
+        recordVisit()
     }, [])
+    // 发送访客信息到后端
+    function recordVisit() {
+        const userUUID = getOrCreateUUID();
+        visit({userUUID})
+    }
     return (
         <Sidebar collapsible="icon" {...props}>
             <SidebarHeader>

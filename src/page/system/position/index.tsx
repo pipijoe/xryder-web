@@ -284,7 +284,7 @@ export default function Component() {
                 </div>
             </header>
 
-            <div className={'pl-4 container grid gap-2'}>
+            <div className={'pl-4 pt-2 pr-4 container grid gap-2'}>
                 <div className="flex flex-col sm:flex-row justify-between items-center pt-2 gap-2">
                     <h1 className="text-2xl font-bold">职位管理</h1>
                     <div className="relative w-full sm:w-64">

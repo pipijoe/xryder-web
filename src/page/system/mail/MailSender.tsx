@@ -181,7 +181,7 @@ const MailSender = () => {
                     </Breadcrumb>
                 </div>
             </header>
-            <div className={'pl-4 container grid gap-2 mt-2'}>
+            <div className={'pl-4 pt-2 pr-4 container grid gap-2 mt-2'}>
                 <div className="flex items-center gap-4">
                     <Button variant="outline" size="icon" className="h-7 w-7" onClick={back}>
                         <ChevronLeft className="h-4 w-4"/>
@@ -206,7 +206,7 @@ const MailSender = () => {
                                         <FormItem>
                                             <FormLabel>标题</FormLabel>
                                             <FormControl>
-                                                <Input placeholder="输入通知标题" {...field}
+                                                <Input placeholder="输入邮件标题" {...field}
                                                        autoComplete={"off"} className='w-2/3'/>
                                             </FormControl>
                                             <FormMessage/>
@@ -222,7 +222,7 @@ const MailSender = () => {
                                             <FormControl>
                                                 <Textarea
                                                     {...field}
-                                                    placeholder="输入通知内容"
+                                                    placeholder="输入邮件内容"
                                                     rows={5}
                                                 />
                                             </FormControl>

@@ -16,6 +16,7 @@ import MailBox from "@/page/mailbox";
 import Account from "@/page/account";
 import MailSender from "@/page/system/mail/MailSender";
 import {AiChat} from "@/page/chat";
+import Monitor from "@/page/monitor";
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
                             <Route path="/mail" element={<MailBox />} />
                             <Route path="/account" element={<Account />} />
                             <Route path="/chat" element={<AiChat />} />
+                            <Route path="/monitor" element={<Monitor />} />
                         </Routes>
                     </Layout>
                 </Router>

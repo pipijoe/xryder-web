@@ -28,7 +28,7 @@ export function NavSystem({
 
     return (
         <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-            <SidebarGroupLabel>我的项目</SidebarGroupLabel>
+            <SidebarGroupLabel>系统</SidebarGroupLabel>
             <SidebarMenu>
                 {projects.map((item) => (
                     <SidebarMenuItem key={item.name}>

@@ -106,7 +106,7 @@ const Department = () => {
                     </Breadcrumb>
                 </div>
             </header>
-            <div className={'pl-4 container grid gap-2'}>
+            <div className={'pl-4 pt-2 pr-4 container grid gap-2'}>
                 <DepartmentTree department={department}
                                 addDepartment={handleDeptAdd}
                                 deleteDepartment={handleDeptDelete}

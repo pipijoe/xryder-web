@@ -101,7 +101,7 @@ const LoginLog = () => {
                     </Breadcrumb>
                 </div>
             </header>
-            <div className={'pl-4 container grid gap-2'}>
+            <div className={'pl-4 pr-4 container grid gap-2'}>
                 <LoginLogToolBar {...loginLogToolBarProps}/>
                 <Card>
                     <CardHeader>
