@@ -107,13 +107,13 @@ const MailBox = () => {
                         </Tabs>
                     </div>
                     <div className="relative">
-                        <ScrollArea className={'h-[calc(100vh-80px)]'}>
-                            <div className="container grid gap-2 p-4">
-                                {mails.length == 0 && <p className="text-center text-muted-foreground">没有未读邮件</p>}
+                        <ScrollArea className={'h-[calc(100vh-200px)]'}>
+                            <div className="grid gap-2 p-4">
+                                {mails.length == 0 && <p className="text-center ">没有未读邮件</p>}
                                 {mails.map((mail) => (
                                     <Card
                                         key={mail.id}
-                                        className={`max-w-[90%] m-2 p-4 cursor-pointer hover:bg-accent ${
+                                        className={`p-4 cursor-pointer hover:bg-accent ${
                                             selectedMail?.id === mail.id ? "bg-accent" : ""
                                         }`}
                                         onClick={() => {
@@ -142,10 +142,10 @@ const MailBox = () => {
                                 ))}
                             </div>
                         </ScrollArea>
-                        <div
-                            className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-background to-transparent pointer-events-none"></div>
-                        <div
-                            className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>
+                        {/*<div*/}
+                        {/*    className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-background to-transparent pointer-events-none"></div>*/}
+                        {/*<div*/}
+                        {/*    className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>*/}
                     </div>
                 </Card>
 
