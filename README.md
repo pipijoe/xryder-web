@@ -20,13 +20,13 @@ ai对话
 ![登录页](https://github.com/pipijoe/xryder-web/blob/main/src/assets/examples/wechat_2024-12-03_100430_003.png)
 
 ## 使用的组件
-- 状态管理：zustand
-- 路由使用：react-router-dom
-- 样式ui使用 [tailwindcss](https://tailwindcss.com/docs/installation) + [shadcn/ui](https://ui.shadcn.com/)
-- icon: [react-icons](https://react-icons.github.io/react-icons/)和[lucide](https://lucide.dev/icons/)
-- 网络请求使用:axios
-- 表单参数校验：zod 
-- 动效：framer-motion
+- 状态管理: zustand
+- 路由: react-router-dom
+- 样式ui: [tailwindcss](https://tailwindcss.com/docs/installation) + [shadcn/ui](https://ui.shadcn.com/)
+- icon: [react-icons](https://react-icons.github.io/react-icons/) + [lucide](https://lucide.dev/icons/)
+- 网络请求: axios
+- 表单参数校验: zod 
+- 动效: framer-motion
 
 ## 运行
 ```shell
@@ -40,7 +40,7 @@ npm run dev
 npm run build
 ```
 
-### Todo
+### 已有功能
 - [x] 登录、token刷新、多次登录失败锁定
 - [x] 深色模式
 - [x] AI对话
@@ -52,13 +52,14 @@ npm run build
 - [x] 账户管理、头像修改、密码重置等
 - [x] 职位管理
 - [x] 通知公告
+- [x] 403和500 page
 - [ ] 用户信息页
 - [ ] 国际化
 
 ## 参与开发
 1. 创建一个本地分支
     ```git
-      git checkout -b my-new-branch
+   git checkout -b my-new-branch
     ```
 2. 提交你的修改
     ```shell
@@ -74,7 +75,7 @@ npm run build
 
 你可以通过这些方式跟我联系：
 
-- Email:  cutesimba@163.com
-- B站:  https://space.bilibili.com/412405219
+- Email: cutesimba@163.com
+- B站: https://space.bilibili.com/412405219
 
 感谢你在我的互联网角落停留片刻！ 💫
