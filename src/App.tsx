@@ -17,6 +17,8 @@ import Account from "@/page/account";
 import MailSender from "@/page/system/mail/MailSender";
 import {AiChat} from "@/page/chat";
 import Monitor from "@/page/monitor";
+import Forbidden from "@/403";
+import ErrorPage from "@/500";
 
 function App() {
 
@@ -28,6 +30,8 @@ function App() {
                         <Routes>
                             <Route path="/login" element={<Login />} />
                             <Route path="/" element={<Dashboard/>}/>
+                            <Route path="/403" element={<Forbidden />} />
+                            <Route path="/500" element={<ErrorPage />} />
                             <Route path="/sys/users" element={<User/>}/>
                             <Route path="/sys/roles" element={<Role/>}/>
                             <Route path="/sys/department" element={<Department/>}/>
