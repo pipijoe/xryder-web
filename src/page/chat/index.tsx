@@ -233,7 +233,14 @@ export function AiChat() {
 
     const renderers = {
         ul: ({children}) => <ul className="list-disc list-inside">{children}</ul>,
-        ol: ({children}) => <ol className="list-decimal list-inside">{children}</ol>,
+        ol: ({children, ...props}) => {
+            const start = props.start || 1; // 如果 Markdown 中未指定，默认为 1
+            return (
+                <ol start={start} className="list-decimal list-inside">
+                    {children}
+                </ol>
+            );
+        },
         li: ({children}) => <li className="my-2">{children}</li>,
         code: ({node, inline, className, children, ...props}) => {
             const match = /language-(\w+)/.exec(className || '');
@@ -254,7 +261,7 @@ export function AiChat() {
                         }}
                     >
                         <button
-                            className="absolute top-0 right-0 m-2 p-1 bg-gray-700 rounded-md text-white hover:bg-gray-600">
+                            className="absolute -top-2 -right-2  bg-gray-700 rounded-md text-white hover:bg-gray-600">
                             {copied ? <FaCheck/> : <FaCopy/>}
                         </button>
                     </CopyToClipboard>

@@ -53,6 +53,7 @@
     background-color: rgb(40, 44, 52); /* 代码块的背景颜色 */
     padding: 16px; /* 代码块的内边距 */
     border-radius: 6px; /* 代码块的圆角 */
+    margin-top: 4px;
 }
 
 .markdown-body code {
