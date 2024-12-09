@@ -254,15 +254,9 @@ export function AiChat() {
                         children={String(children).replace(/\n$/, '')}
                         {...props}
                     />
-                    <CopyToClipboard
-                        text={String(children).replace(/\n$/, '')}
-                        onCopy={() => {
-                            setCopied(true);
-                            setTimeout(() => setCopied(false), 2000); // 2秒后清除 "已拷贝" 状态
-                        }}
-                    >
+                    <div className={'absolute top-0 right-0'}>
                         <CodeCopyButton text={String(children).replace(/\n$/, '')} />
-                    </CopyToClipboard>
+                    </div>
                 </div>
             ) : (
                 <code className={className} {...props}>

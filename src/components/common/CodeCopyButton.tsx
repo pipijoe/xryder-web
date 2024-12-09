@@ -20,7 +20,7 @@ const CodeCopyButton = ({ text }) => {
     return (
         <CopyToClipboard text={text} onCopy={handleCopy}>
             <button
-                className="absolute -top-2 -right-2 bg-gray-700 rounded-md text-white hover:bg-gray-600">
+                className="bg-gray-700 rounded-md text-white hover:bg-gray-600">
                 {copied ? <FaCheck /> : <FaCopy />}
             </button>
         </CopyToClipboard>
