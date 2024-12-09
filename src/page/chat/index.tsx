@@ -243,6 +243,20 @@ export function AiChat() {
             );
         },
         li: ({children}) => <li className="my-2">{children}</li>,
+        a: ({ href, children }) => {
+            const isExternal = href?.startsWith("http");
+            return (
+                <a
+                    href={href}
+                    target={isExternal ? "_blank" : "_self"}
+                    rel={isExternal ? "noopener noreferrer" : undefined}
+                    className="text-blue-500 underline hover:text-blue-700"
+                >
+                    {isExternal && <span className="ml-1 text-sm">🔗</span>}
+                    {children}
+                </a>
+            );
+        },
         code: ({node, inline, className, children, ...props}) => {
             const match = /language-(\w+)/.exec(className || '');
             return !inline && match ? (
