@@ -38,6 +38,7 @@ import {
     BreadcrumbList, BreadcrumbPage,
     BreadcrumbSeparator
 } from "@/components/ui/breadcrumb";
+import CodeCopyButton from "@/components/common/CodeCopyButton";
 
 export function AiChat() {
     const {account} = useAccountStore();
@@ -260,10 +261,7 @@ export function AiChat() {
                             setTimeout(() => setCopied(false), 2000); // 2秒后清除 "已拷贝" 状态
                         }}
                     >
-                        <button
-                            className="absolute -top-2 -right-2  bg-gray-700 rounded-md text-white hover:bg-gray-600">
-                            {copied ? <FaCheck/> : <FaCopy/>}
-                        </button>
+                        <CodeCopyButton text={String(children).replace(/\n$/, '')} />
                     </CopyToClipboard>
                 </div>
             ) : (
