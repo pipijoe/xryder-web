@@ -53,8 +53,7 @@ npm run build
 - [x] 职位管理
 - [x] 通知公告
 - [x] 403和500 page
-- [ ] 用户信息页
-- [ ] 国际化
+- [x] 400异常处理
 
 ## 参与开发
 1. 创建一个本地分支
@@ -79,3 +78,7 @@ npm run build
 - B站: https://space.bilibili.com/412405219
 
 感谢你在我的互联网角落停留片刻！ 💫
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=pipijoe/xryder-web&type=Date)](https://star-history.com/#pipijoe/xryder-web&Date)

@@ -10,6 +10,7 @@ import {SidebarInset, SidebarProvider} from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
 import { useLocation } from 'react-router-dom';
 import { Toaster } from "sonner"
+import GlobalErrorHandler from "@/GlobalErrorHandler";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     const location = useLocation();
@@ -29,6 +30,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 {children}
             </SidebarInset>
             <Toaster position="top-center" richColors/>
+            <GlobalErrorHandler />
         </SidebarProvider>
     )
 }

@@ -54,6 +54,7 @@
     padding: 16px; /* 代码块的内边距 */
     border-radius: 6px; /* 代码块的圆角 */
     margin-top: 4px;
+    color: white;
 }
 
 .markdown-body code {
