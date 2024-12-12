@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import {Helmet} from "react-helmet-async";
 import {Prism as SyntaxHighlighter} from "react-syntax-highlighter";
-import {vscDarkPlus} from "react-syntax-highlighter/dist/cjs/styles/prism"; // 另一深色主题
+import {darcula} from "react-syntax-highlighter/dist/cjs/styles/prism"; // 另一深色主题
 
 const markdownContent = `
 # 开始
@@ -52,7 +52,7 @@ npm run build
 项目中引入的Open AI的开发框架，使用的是智普AI的免费大模型。建议可以去智普大模型官网进行APPKey的申请。并将key配置到环境变量中或者直接写入application.yml中。
 
 可以考虑使用国产大模型**智普AI**，效果不错，接入方便，还有免费模型可以使用。支持OpenAPI格式。
-\`\`\`
+\`\`\`yaml
 spring:
       ai:
     openai:
@@ -125,7 +125,7 @@ const Start = () => {
                             const match = /language-(\w+)/.exec(className || ""); // 获取语言类型
                             return !inline && match ? (
                                 <SyntaxHighlighter
-                                    style={vscDarkPlus} // 根据主题切换高亮样式
+                                    style={darcula} // 根据主题切换高亮样式
                                     language={match[1]}
                                     PreTag="div"
                                     {...props}

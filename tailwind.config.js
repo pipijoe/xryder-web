@@ -23,6 +23,12 @@ export default {
 						padding: '0.2em 0.4em',
 						borderRadius: '4px',
 					},
+					hr: {
+						borderColor: '#e5e7eb', // 设置分割线颜色
+						borderWidth: '1px', // 设置分割线宽度
+						marginTop: '1.5em', // 分割线顶部间距
+						marginBottom: '1.5em', // 分割线底部间距
+					},
 				},
 			},
 			dark: {
@@ -39,7 +45,7 @@ export default {
 						borderLeftColor: '#4b5563',
 					},
 					code: {
-						backgroundColor: '#1f2937',
+						// backgroundColor: '#1f2937',
 						color: '#f3f4f6',
 					},
 					h1: { color: '#f9fafb' },
@@ -49,6 +55,12 @@ export default {
 					strong: { color: '#f9fafb' },
 					li: { color: '#f9fafb' },
 					ol: { color: '#f9fafb' },
+					hr: {
+						borderColor: '#374151', // 暗黑模式下的分割线颜色
+						borderWidth: '1px',
+						marginTop: '1.5em',
+						marginBottom: '1.5em',
+					},
 				},
 			},
 		},
