@@ -39,6 +39,7 @@ import {
     BreadcrumbSeparator
 } from "@/components/ui/breadcrumb";
 import CodeCopyButton from "@/components/common/CodeCopyButton";
+import TypingAnimation from "@/components/ui/typing-animation";
 
 export function AiChat() {
     const {account} = useAccountStore();
@@ -48,14 +49,7 @@ export function AiChat() {
     const [uploadPercentage, setUploadPercentage] = useState(0);
     const [uploading, setUploading] = useState(false);
     const [input, setInput] = useState('');
-    const [copied, setCopied] = useState(false); // 跟踪是否已拷贝
-    const [messages, setMessages] = useState([{
-        text: '你好，请问有什么可以帮您的吗？',
-        sender: 'bot',
-        avatar: <img src={agentImg} alt="ChatGPT" className="w-6 h-6 rounded-full mt-1 mr-2"/>,
-        docs: [],
-        images: []
-    }]);
+    const [messages, setMessages] = useState([]);
     const textareaRef = useRef(null);
     const messagesEndRef = useRef(null);
     const [botState, setBotState] = useState('idle'); // 状态：idle, ready, typing, thinking
@@ -312,7 +306,7 @@ export function AiChat() {
             </header>
             <div className="flex justify-center">
                 <div className="w-full max-w-4xl flex flex-col h-[calc(100vh_-_theme(spacing.20))]">
-                    <ScrollArea className={'flex-1'}>
+                    <ScrollArea className={`${messages.length > 0 ? "flex-1" : ""}`}>
                         <div className="flex w-full flex-col rounded-xl p-2">
                             {messages.map((msg, index) => (
                                 <div
@@ -394,127 +388,132 @@ export function AiChat() {
                             <div ref={messagesEndRef}/>
                         </div>
                     </ScrollArea>
-                    {messages.length == 1 &&
-                        <div className={'hidden md:block'}>
-                            <div className={'text-muted-foreground opacity-0 animate-fade-in'}>
-                                <p>今天想从哪开始？</p>
+                    <div className={`${messages.length == 0 ? "my-auto" : ""}`}>
+                        {messages.length == 0 &&
+                            <div className={'flex flex-col items-center text-muted-foreground'}>
+                                <TypingAnimation
+                                    className="text-xl font-semibold text-center"
+                                    text="有什么可以帮忙的？"
+                                    duration={100}
+                                />
+                                <div className={'mb-2 mt-2 flex gap-2 animate-fade-up'}>
+                                    <Button variant="outline" size="sm" className="h-8 text-xs "
+                                            onClick={() => handleSend("今天有什么新邮件？")}>
+                                        <Mail className="mr-2 h-4 w-4 "/>
+                                        今天有什么新邮件？
+                                    </Button>
+                                    <Button variant="outline" size="sm" className="h-8 text-xs "
+                                            onClick={() => handleSend("最近有哪些任务要做？")}>
+                                        <CalendarCheck2 className='mr-2 h-4 w-4'/>
+                                        最近有哪些任务要做？
+                                    </Button>
+                                    <Button variant="outline" size="sm" className="h-8 text-xs"
+                                            onClick={() => handleSend("发送邮件")}>
+                                        <SendHorizontal className="mr-2 h-4 w-4 -rotate-45"/>
+                                        发送邮件
+                                    </Button>
+                                </div>
+                            </div>}
+                        <div
+                            className="mb-1 relative overflow-hidden rounded-lg border bg-background focus-within:ring-1 focus-within:ring-ring"
+                            x-chunk="dashboard-03-chunk-1"
+                        >
+                            <ScrollArea className={'w-full'}>
+                                <div className="overflow-auto whitespace-nowrap w-full flex">
+                                    {
+                                        files.map((f: string, index) => (
+                                            <div className='relative p-2 m-4 bg-foreground/10 rounded-xl' key={index}>
+                                                <div className="flex gap-2 overflow-hidden">
+                                                    <div className='flex-none relative'>
+                                                        {['png', 'jpeg', 'jpg'].includes(f.split(".").pop())
+                                                            ? <img src={imageImg} alt="file"
+                                                                   className={`w-12 h-12 rounded-xl ${uploading && files.length == index + 1 ? 'bg-opacity-60' : ''}`}
+                                                            /> :
+                                                            <img src={fileImg} alt="file"
+                                                                 className={`w-12 h-12 rounded-xl ${uploading && files.length == index + 1 ? 'bg-opacity-60' : ''}`}
+                                                            />}
+                                                        {uploading && files.length == index + 1 && (
+                                                            <div className='w-8 h-8 absolute top-2 left-2'>
+                                                                <CircularProgressbar
+                                                                    value={uploadPercentage}
+                                                                    strokeWidth={24}
+                                                                    styles={buildStyles({
+                                                                        pathColor: `rgba(62, 152, 199, ${uploadPercentage / 100})`,
+                                                                        trailColor: '#d6d6d6',
+                                                                    })}
+                                                                />
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                    <div>
+                                                        <TooltipProvider>
+                                                            <Tooltip>
+                                                                <TooltipTrigger asChild>
+                                                                    <div
+                                                                        className="w-64 whitespace-nowrap text-ellipsis font-semibold">{f}</div>
+                                                                </TooltipTrigger>
+                                                                <TooltipContent>
+                                                                    {f}
+                                                                </TooltipContent>
+                                                            </Tooltip>
+                                                        </TooltipProvider>
+                                                        <div className="text-token-text-tertiary">{f.split('.').pop()}</div>
+                                                    </div>
+                                                </div>
+                                                <div className="absolute -top-3 -right-3 group-hover:block">
+                                                    <button className="text-foreground/50 hover:text-accent-foreground"
+                                                            onClick={() => deleteFile(f)}
+                                                    >
+                                                        <TiDelete className='w-8 h-8'/>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                                <ScrollBar orientation="horizontal"/>
+                            </ScrollArea>
+                            <div className={'p-1'}>
+                                <Textarea
+                                    id="message"
+                                    value={input}
+                                    onChange={(e) => setInput(e.target.value)}
+                                    onKeyDown={handleKeyDown}
+                                    placeholder="在这里输入你的问题跟智能助手对话..."
+                                    className="min-h-12 resize-none border-0 p-3 shadow-none focus-visible:ring-0 custom-scrollbar"
+                                />
                             </div>
-                            <div className={'mb-2 mt-2 flex gap-2 animate-fade-up'}>
-                                <Button variant="outline" size="sm" className="h-8 text-xs text-muted-foreground"
-                                        onClick={() => handleSend("今天有什么新邮件？")}>
-                                    <Mail className="mr-2 h-4 w-4 "/>
-                                    今天有什么新邮件？
-                                </Button>
-                                <Button variant="outline" size="sm" className="h-8 text-xs text-muted-foreground"
-                                        onClick={() => handleSend("最近有哪些任务要做？")}>
-                                    <CalendarCheck2 className='mr-2 h-4 w-4'/>
-                                    最近有哪些任务要做？
-                                </Button>
-                                <Button variant="outline" size="sm" className="h-8 text-xs text-muted-foreground"
-                                        onClick={() => handleSend("发送邮件")}>
-                                    <SendHorizontal className="mr-2 h-4 w-4 -rotate-45"/>
-                                    发送邮件
-                                </Button>
-                            </div>
-                        </div>}
-                    <div
-                        className="mb-1 relative overflow-hidden rounded-lg border bg-background focus-within:ring-1 focus-within:ring-ring"
-                        x-chunk="dashboard-03-chunk-1"
-                    >
-                        <ScrollArea className={'w-full'}>
-                            <div className="overflow-auto whitespace-nowrap w-full flex">
+                            <div className="flex items-center p-3 pt-0 h-10 mt-2">
+                                <TooltipProvider>
+                                    <Tooltip>
+                                        <TooltipTrigger asChild>
+                                            <label className="flex items-center cursor-pointer">
+                                                <Paperclip className="size-6"/>
+                                                <input
+                                                    type="file"
+                                                    onChange={handleFileChange}
+                                                    className="hidden"
+                                                    accept=".doc, .docx, .csv, .txt, .pdf, .xls, .xlsx"
+                                                />
+                                            </label>
+                                        </TooltipTrigger>
+                                        <TooltipContent side="top">上传文件</TooltipContent>
+                                    </Tooltip>
+                                </TooltipProvider>
                                 {
-                                    files.map((f: string, index) => (
-                                        <div className='relative p-2 m-4 bg-foreground/10 rounded-xl' key={index}>
-                                            <div className="flex gap-2 overflow-hidden">
-                                                <div className='flex-none relative'>
-                                                    {['png', 'jpeg', 'jpg'].includes(f.split(".").pop())
-                                                        ? <img src={imageImg} alt="file"
-                                                               className={`w-12 h-12 rounded-xl ${uploading && files.length == index + 1 ? 'bg-opacity-60' : ''}`}
-                                                        /> :
-                                                        <img src={fileImg} alt="file"
-                                                             className={`w-12 h-12 rounded-xl ${uploading && files.length == index + 1 ? 'bg-opacity-60' : ''}`}
-                                                        />}
-                                                    {uploading && files.length == index + 1 && (
-                                                        <div className='w-8 h-8 absolute top-2 left-2'>
-                                                            <CircularProgressbar
-                                                                value={uploadPercentage}
-                                                                strokeWidth={24}
-                                                                styles={buildStyles({
-                                                                    pathColor: `rgba(62, 152, 199, ${uploadPercentage / 100})`,
-                                                                    trailColor: '#d6d6d6',
-                                                                })}
-                                                            />
-                                                        </div>
-                                                    )}
-                                                </div>
-                                                <div>
-                                                    <TooltipProvider>
-                                                        <Tooltip>
-                                                            <TooltipTrigger asChild>
-                                                                <div
-                                                                    className="w-64 whitespace-nowrap text-ellipsis font-semibold">{f}</div>
-                                                            </TooltipTrigger>
-                                                            <TooltipContent>
-                                                                {f}
-                                                            </TooltipContent>
-                                                        </Tooltip>
-                                                    </TooltipProvider>
-                                                    <div className="text-token-text-tertiary">{f.split('.').pop()}</div>
-                                                </div>
-                                            </div>
-                                            <div className="absolute -top-3 -right-3 group-hover:block">
-                                                <button className="text-foreground/50 hover:text-accent-foreground"
-                                                        onClick={() => deleteFile(f)}
-                                                >
-                                                    <TiDelete className='w-8 h-8'/>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    ))
+                                    botState == 'typing' ?
+                                        <BiCircle className='ml-auto gap-1.5 size-6'/> :
+                                        <Button type="submit" size="sm" className="ml-auto gap-1.5"
+                                                disabled={botState != 'ready'}
+                                                onClick={() => handleSend()}>
+                                            发送信息
+                                            <CornerDownLeft className="size-3.5"/>
+                                        </Button>
                                 }
                             </div>
-                            <ScrollBar orientation="horizontal"/>
-                        </ScrollArea>
-                        <div className={'p-1'}>
-                            <Textarea
-                                id="message"
-                                value={input}
-                                onChange={(e) => setInput(e.target.value)}
-                                onKeyDown={handleKeyDown}
-                                placeholder="在这里输入你的问题跟智能助手对话..."
-                                className="min-h-12 resize-none border-0 p-3 shadow-none focus-visible:ring-0 custom-scrollbar"
-                            />
-                        </div>
-                        <div className="flex items-center p-3 pt-0 h-10 mt-2">
-                            <TooltipProvider>
-                                <Tooltip>
-                                    <TooltipTrigger asChild>
-                                        <label className="flex items-center cursor-pointer">
-                                            <Paperclip className="size-6"/>
-                                            <input
-                                                type="file"
-                                                onChange={handleFileChange}
-                                                className="hidden"
-                                                accept=".doc, .docx, .csv, .txt, .pdf, .xls, .xlsx"
-                                            />
-                                        </label>
-                                    </TooltipTrigger>
-                                    <TooltipContent side="top">上传文件</TooltipContent>
-                                </Tooltip>
-                            </TooltipProvider>
-                            {
-                                botState == 'typing' ?
-                                    <BiCircle className='ml-auto gap-1.5 size-6'/> :
-                                    <Button type="submit" size="sm" className="ml-auto gap-1.5"
-                                            disabled={botState != 'ready'}
-                                            onClick={() => handleSend()}>
-                                        发送信息
-                                        <CornerDownLeft className="size-3.5"/>
-                                    </Button>
-                            }
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
