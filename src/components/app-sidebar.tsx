@@ -66,25 +66,25 @@ const data = {
             ],
         },
         {
-            title: "Documentation",
-            url: "#",
+            title: "文档",
+            url: "/docs",
             icon: BookOpen,
             items: [
                 {
-                    title: "Introduction",
-                    url: "#",
+                    title: "简介",
+                    url: "/docs/introduction",
                 },
                 {
-                    title: "Get Started",
-                    url: "#",
+                    title: "开始",
+                    url: "/docs/getstarted",
                 },
                 {
-                    title: "Tutorials",
-                    url: "#",
+                    title: "教程",
+                    url: "/docs/tutorials",
                 },
                 {
-                    title: "Changelog",
-                    url: "#",
+                    title: "更新日志",
+                    url: "/docs/changelog",
                 },
             ],
         },
