@@ -11,9 +11,10 @@ let requestList: any[] = []
 // 是否正在刷新中
 let isRefreshToken = false
 // 请求白名单，无须token的接口
-const whiteList: string[] = ['/api/v1/token']
+const whiteList: string[] = ['/api/v1/token', '/login', '/v1/publicKey']
+// 所有通过api发送的请求，都会加上/api的前缀
 const api = axios.create({
-    baseURL: '/api', // 使用配置文件中的 API 地址
+    baseURL: '/api',
 });
 
 // request拦截器
