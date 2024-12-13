@@ -162,7 +162,7 @@ export const useAccountStore = create<StoreState>((set) => ({
             if (data.code == 200) {
                 set((state) => ({
                     mails: state.mails.filter(m => m.id !== params.id),
-                    deleting: true
+                    deleting: false
                 }));
             }
             return data
