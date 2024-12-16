@@ -185,7 +185,8 @@ export function AiChat() {
             onerror(err) {
                 console.error('Connection error:', err);
                 // 处理其他错误逻辑
-            }
+            },
+            openWhenHidden: true
         });
     };
 
