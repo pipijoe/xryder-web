@@ -9,16 +9,14 @@
 import {fetchEventSource} from '@microsoft/fetch-event-source';
 import {Helmet} from 'react-helmet-async';
 import ReactMarkdown from 'react-markdown';
-import {CopyToClipboard} from 'react-copy-to-clipboard';
-import remarkGfm from 'remark-gfm'; // 引入remark-gfm插件
+import remarkGfm from 'remark-gfm';
 import {Light as SyntaxHighlighter} from 'react-syntax-highlighter';
 import {atomOneDark} from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import React, {useEffect, useRef, useState} from "react";
-import {agentImg, fileImg, imageImg, generateRandomString} from '@/utils'
-import {FaCheck, FaCopy} from "react-icons/fa";
+import {agentImg, fileImg, generateRandomString, imageImg} from '@/utils'
 import './index.css'
 import {buildStyles, CircularProgressbar} from 'react-circular-progressbar';
-import {BookOpenText, CalendarCheck2, CornerDownLeft, Mail, Paperclip, SendHorizontal} from "lucide-react";
+import {CalendarCheck2, CornerDownLeft, Mail, Paperclip, SendHorizontal} from "lucide-react";
 import {Button} from "@/components/ui/button";
 import {TooltipContent} from "@/components/ui/tooltip";
 import {Tooltip, TooltipProvider, TooltipTrigger} from "@radix-ui/react-tooltip";
@@ -35,7 +33,8 @@ import {
     Breadcrumb,
     BreadcrumbItem,
     BreadcrumbLink,
-    BreadcrumbList, BreadcrumbPage,
+    BreadcrumbList,
+    BreadcrumbPage,
     BreadcrumbSeparator
 } from "@/components/ui/breadcrumb";
 import CodeCopyButton from "@/components/common/CodeCopyButton";
@@ -185,7 +184,8 @@ export function AiChat() {
             onerror(err) {
                 console.error('Connection error:', err);
                 // 处理其他错误逻辑
-            }
+            },
+            openWhenHidden: true
         });
     };
 
