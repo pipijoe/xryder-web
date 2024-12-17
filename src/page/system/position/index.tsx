@@ -54,6 +54,7 @@ import {
     BreadcrumbList, BreadcrumbPage,
     BreadcrumbSeparator
 } from "@/components/ui/breadcrumb";
+import {NavActions} from "@/components/nav-actions.tsx";
 
 const FormSchema = z.object({
     name: z.string().min(2, {
@@ -281,6 +282,9 @@ export default function Component() {
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>
+                </div>
+                <div className="ml-auto px-3">
+                    <NavActions/>
                 </div>
             </header>
 

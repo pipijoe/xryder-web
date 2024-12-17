@@ -39,6 +39,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import CodeCopyButton from "@/components/common/CodeCopyButton";
 import TypingAnimation from "@/components/ui/typing-animation";
+import {NavActions} from "@/components/nav-actions.tsx";
 
 export function AiChat() {
     const {account} = useAccountStore();
@@ -279,7 +280,7 @@ export function AiChat() {
             <Helmet>
                 <title>智能助手</title>
             </Helmet>
-            <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4" >
+            <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
                 <div className="flex flex-1 items-center gap-2 px-3 ">
                     <SidebarTrigger className="-ml-1"/>
                     <Separator orientation="vertical" className="mr-2 h-4"/>
@@ -302,6 +303,9 @@ export function AiChat() {
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>
+                </div>
+                <div className="ml-auto px-3">
+                    <NavActions/>
                 </div>
             </header>
             <div className="flex justify-center">

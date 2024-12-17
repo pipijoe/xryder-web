@@ -22,6 +22,7 @@ import {
     BreadcrumbList, BreadcrumbPage,
     BreadcrumbSeparator
 } from "@/components/ui/breadcrumb";
+import {NavActions} from "@/components/nav-actions.tsx";
 
 const Role = () => {
     const {
@@ -165,6 +166,9 @@ const Role = () => {
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>
+                </div>
+                <div className="ml-auto px-3">
+                    <NavActions/>
                 </div>
             </header>
             <div className={'pl-4 pt-2 pr-4 container grid gap-2'}>

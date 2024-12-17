@@ -23,6 +23,7 @@ import UserToolBar from "@/components/system/UserBarTool";
 import Pager from "@/components/common/Pager";
 import useSystemStore from "@/store/systemStore";
 import {useEffect, useState} from "react";
+import {NavActions} from "@/components/nav-actions.tsx";
 
 const User = () => {
     const {
@@ -232,6 +233,9 @@ const User = () => {
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>
+                </div>
+                <div className="ml-auto px-3">
+                    <NavActions/>
                 </div>
             </header>
             <div className={'pl-4 pt-2 pr-4 container grid gap-2 '}>
