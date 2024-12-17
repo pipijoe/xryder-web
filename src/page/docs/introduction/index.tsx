@@ -7,7 +7,7 @@
  */
 import React from "react";
 import ReactMarkdown from "react-markdown";
-import {useTheme} from "@/components/theme-provider";
+import {getTheme} from "@/components/theme-provider";
 import {SidebarTrigger} from "@/components/ui/sidebar";
 import {Separator} from "@/components/ui/separator";
 import {
@@ -71,7 +71,7 @@ const markdownContent = `
 `;
 
 const Introduction = () => {
-    const { theme } = useTheme(); // 获取当前主题
+    const theme = getTheme(); // 获取当前主题
     return (
         <div className={`${theme === "dark" ? "prose-dark" : ""}`}>
             <Helmet>

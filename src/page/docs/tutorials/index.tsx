@@ -7,7 +7,7 @@
  */
 import React from "react";
 import ReactMarkdown from "react-markdown";
-import {useTheme} from "@/components/theme-provider";
+import {getTheme} from "@/components/theme-provider";
 import {SidebarTrigger} from "@/components/ui/sidebar";
 import {Separator} from "@/components/ui/separator";
 import {
@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import {Helmet} from "react-helmet-async";
 import {Prism as SyntaxHighlighter} from "react-syntax-highlighter";
-import {vscDarkPlus} from "react-syntax-highlighter/dist/cjs/styles/prism"; // 另一深色主题
+import {vscDarkPlus} from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 const markdownContent = `
 # 建设中...
@@ -27,7 +27,7 @@ const markdownContent = `
 `;
 
 const Tutorials = () => {
-    const { theme } = useTheme(); // 获取当前主题
+    const theme = getTheme();  // 获取当前主题
     return (
         <div className={`${theme === "dark" ? "prose-dark" : ""}`}>
             <Helmet>

@@ -7,7 +7,7 @@
  */
 import React from "react";
 import ReactMarkdown from "react-markdown";
-import {useTheme} from "@/components/theme-provider";
+import {getTheme} from "@/components/theme-provider";
 import {SidebarTrigger} from "@/components/ui/sidebar";
 import {Separator} from "@/components/ui/separator";
 import {
@@ -89,7 +89,7 @@ spring:
 `;
 
 const Start = () => {
-    const { theme } = useTheme(); // 获取当前主题
+    const theme = getTheme(); // 获取当前主题
     return (
         <div className={`${theme === "dark" ? "prose-dark" : ""}`}>
             <Helmet>
@@ -121,7 +121,7 @@ const Start = () => {
             <div className="prose max-w-4xl mx-auto mt-2 pb-2">
                 <ReactMarkdown
                     components={{
-                        code({ inline, className, children, ...props }) {
+                        code({inline, className, children, ...props}) {
                             const match = /language-(\w+)/.exec(className || ""); // 获取语言类型
                             return !inline && match ? (
                                 <SyntaxHighlighter
