@@ -300,7 +300,11 @@ export default function Component() {
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4">
                     <Card
-                        className="flex items-center justify-center h-36 cursor-pointer transition-all duration-300 ease-in-out bg-gradient-to-br from-sky-100 to-sky-200 dark:from-gray-900 dark:to-gray-700 hover:from-sky-200 hover:to-sky-300 dark:hover:from-gray-800 dark:hover:to-gray-600 border-0 shadow-md hover:shadow-lg"
+                        className="flex items-center justify-center h-36 cursor-pointer
+                                    transition-all duration-300 ease-in-out
+                                    bg-primary/25 hover:bg-primary/50
+                                    dark:bg-primary/50 hover:dark:bg-primary/75
+                                    border-0 hover:shadow-lg"
                         onClick={onAddClick}
                     >
                         <CardHeader className={'flex items-center justify-center'}>
