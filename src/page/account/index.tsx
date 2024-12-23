@@ -120,6 +120,18 @@ const Account = () => {
     }, [account])
 
     const changeMyAvatar = (e) => {
+        const file = e.target.files[0]; // 获取上传的文件
+
+        if (!file) return;
+
+        // 限制文件大小为20KB
+        const maxSize = 2 * 1024 * 10; // 2KB
+
+        if (file.size > maxSize) {
+            toast.warning("文件大小不能超过 20KB，请选择更小的图片！");
+            e.target.value = ""; // 清空输入框的值
+            return;
+        }
         changeAvatar(e).then(
             () => toast.success("上传成功！")
         )
