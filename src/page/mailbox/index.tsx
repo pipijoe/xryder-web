@@ -5,12 +5,12 @@
  * Project: xryder
  * Description: This is a rapid development template for middle and backend UI based on vite, react, tailwindcss and shadcn.
  */
-import React, {useState, useEffect} from "react"
+import React, {useEffect, useState} from "react"
 import {ScrollArea} from "@/components/ui/scroll-area"
 import {Card, CardContent} from "@/components/ui/card"
 import {Button} from "@/components/ui/button"
 import {Tabs, TabsList, TabsTrigger} from "@/components/ui/tabs"
-import {Trash2, Mail, MailOpen, BadgeX} from "lucide-react"
+import {BadgeX, Mail, MailOpen, Trash2} from "lucide-react"
 import {format} from "date-fns"
 import {Helmet} from "react-helmet-async";
 import {Separator} from "@/components/ui/separator";
@@ -24,10 +24,9 @@ import {
     Breadcrumb,
     BreadcrumbItem,
     BreadcrumbLink,
-    BreadcrumbList, BreadcrumbPage,
+    BreadcrumbList,
     BreadcrumbSeparator
 } from "@/components/ui/breadcrumb";
-import {NavActions} from "@/components/nav-actions";
 
 const MailBox = () => {
     const {mails, getMails, account, getAccount, readMail, deleteMail, deleting} = useAccountStore()
@@ -61,10 +60,6 @@ const MailBox = () => {
                 if (res.code === 200) {
                     toast.success("已删除！")
                     deleteDialog.dismiss()
-                } else {
-                    toast.error("删除失败！", {
-                        description: res.data
-                    })
                 }
             }
         )
@@ -73,7 +68,7 @@ const MailBox = () => {
     return (
         <div>
             <Helmet>
-                <title>{account ? `收件箱(${account.newMails})` : '收件箱'}</title>
+                <title>{account.newMails > 0 ? `收件箱(${account.newMails})` : '收件箱'}</title>
             </Helmet>
             <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
                 <div className="flex flex-1 items-center gap-2 px-3">
@@ -142,10 +137,6 @@ const MailBox = () => {
                                 ))}
                             </div>
                         </ScrollArea>
-                        {/*<div*/}
-                        {/*    className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-background to-transparent pointer-events-none"></div>*/}
-                        {/*<div*/}
-                        {/*    className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>*/}
                     </div>
                 </Card>
 
@@ -158,7 +149,6 @@ const MailBox = () => {
                                     <Button
                                         variant="ghost"
                                         size="icon"
-                                        // onClick={() => handleDelete(selectedMail.id)}
                                         {...deleteDialog.triggerProps}
                                         aria-label="删除通知"
                                         className={'w-6 h-6'}
@@ -167,7 +157,7 @@ const MailBox = () => {
                                     </Button>
                                 </div>
                                 <Separator className="my-4" />
-                                <pre className="text-muted-foreground mb-4 whitespace-normal break-words">{selectedMail.content}</pre>
+                                <pre className="text-muted-foreground mb-4 whitespace-normal break-words  whitespace-pre-wrap">{selectedMail.content}</pre>
                                 <p className="text-sm text-muted-foreground">
                                     发送时间：{format(selectedMail.createTime, "yyyy-MM-dd HH:mm:ss")}
                                 </p>
