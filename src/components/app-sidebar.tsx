@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import {useEffect} from "react"
-import {BookOpen, Bot, ContactRound, Mail, Monitor, Settings2, SquareTerminal,} from "lucide-react"
+import {BookOpen, Bot, Mail, Monitor, Settings2, SquareTerminal,} from "lucide-react"
 import {v4 as uuidv4} from 'uuid';
 
 import {NavMain} from "@/components/nav-main"
