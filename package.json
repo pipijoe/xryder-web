@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@giscus/react": "^3.0.0",
     "@hookform/resolvers": "^3.9.1",
     "@microsoft/fetch-event-source": "^2.0.1",
     "@radix-ui/react-accordion": "^1.2.1",
