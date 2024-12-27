@@ -73,7 +73,7 @@ const MailBox = () => {
     return (
         <div>
             <Helmet>
-                <title>{account ? `收件箱(${account.newMails})` : '收件箱'}</title>
+                <title>{account.newMails > 0 ? `收件箱(${account.newMails})` : '收件箱'}</title>
             </Helmet>
             <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
                 <div className="flex flex-1 items-center gap-2 px-3">
@@ -162,7 +162,7 @@ const MailBox = () => {
                                     </Button>
                                 </div>
                                 <Separator className="my-4" />
-                                <pre className="text-muted-foreground mb-4 whitespace-normal break-words">{selectedMail.content}</pre>
+                                <pre className="text-muted-foreground mb-4 whitespace-normal break-words whitespace-pre-wrap">{selectedMail.content}</pre>
                                 <p className="text-sm text-muted-foreground">
                                     发送时间：{format(selectedMail.createTime, "yyyy-MM-dd HH:mm:ss")}
                                 </p>
