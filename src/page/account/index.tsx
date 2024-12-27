@@ -173,10 +173,6 @@ const Account = () => {
                 setTimeout(() => {
                     logout()
                 }, 2000)
-            } else {
-                toast.error("修改失败！", {
-                    description: res.data
-                })
             }
         })
     }

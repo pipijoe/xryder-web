@@ -142,10 +142,6 @@ const MailBox = () => {
                                 ))}
                             </div>
                         </ScrollArea>
-                        {/*<div*/}
-                        {/*    className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-background to-transparent pointer-events-none"></div>*/}
-                        {/*<div*/}
-                        {/*    className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>*/}
                     </div>
                 </Card>
 
@@ -158,7 +154,6 @@ const MailBox = () => {
                                     <Button
                                         variant="ghost"
                                         size="icon"
-                                        // onClick={() => handleDelete(selectedMail.id)}
                                         {...deleteDialog.triggerProps}
                                         aria-label="删除通知"
                                         className={'w-6 h-6'}
