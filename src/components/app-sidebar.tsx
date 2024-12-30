@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import {useEffect} from "react"
-import {BookOpen, Bot, Mail, Monitor, Settings2, SquareTerminal,} from "lucide-react"
+import {BookOpen, Bot, LayoutDashboard, Mail, Monitor, Settings2, SquareTerminal,} from "lucide-react"
 import {v4 as uuidv4} from 'uuid';
 
 import {NavMain} from "@/components/nav-main"
@@ -23,6 +23,7 @@ import {useAccountStore} from "@/store/accountStore";
 import useSystemStore from "@/store/systemStore";
 import {NavSecondary} from "@/components/nav-secondary";
 import {useVisitorStore} from "@/store/visitorStore";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const data = {
     navMain: [
@@ -124,12 +125,12 @@ const data = {
             ],
         },
     ],
-    navSecondary: [
+    workplace: [
         {
-            title: "收件箱",
-            url: "/mail",
-            icon: Mail,
-        }
+            name: '仪表盘',
+            url: "/dashboard",
+            icon: LayoutDashboard,
+        },
     ],
     projects: [
         {
@@ -185,8 +186,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 </SidebarMenu>
             </SidebarHeader>
             <SidebarContent className={'custom-scrollbar'}>
+                <NavSystem projects={data.workplace} label={'工作台'}/>
                 <NavMain items={data.navMain} />
-                <NavSystem projects={data.projects} />
+                <NavSystem projects={data.projects} label={'系统'}/>
                 <NavSecondary account={account} className="mt-auto" />
             </SidebarContent>
             <SidebarFooter>

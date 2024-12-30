@@ -1,33 +1,46 @@
-/**
- * @license MIT
- * Created by: joetao
- * Created on: 2024/12/11
- * Project: xryder
- * Description: This is a rapid development template for middle and backend UI based on vite, react, tailwindcss and shadcn.
- */
-import React from "react";
-import ReactMarkdown from "react-markdown";
 import {getTheme} from "@/components/theme-provider";
-import {SidebarTrigger} from "@/components/ui/sidebar";
-import {Separator} from "@/components/ui/separator";
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbSeparator
-} from "@/components/ui/breadcrumb";
+import React from "react";
+import Giscus from "@giscus/react";
 import {Helmet} from "react-helmet-async";
 import {Prism as SyntaxHighlighter} from "react-syntax-highlighter";
 import {vscDarkPlus} from "react-syntax-highlighter/dist/cjs/styles/prism";
-import Giscus from "@giscus/react"; // 另一深色主题
+import ReactMarkdown from "react-markdown";
 
+/**
+ * @license MIT
+ * Created by: joetao
+ * Created on: 2024/12/30
+ * Project: xryder
+ * Description: This is a rapid development template for middle and backend UI based on vite, react, tailwindcss and shadcn.
+ */
 const markdownContent = `
-# 简介
+# 欢迎 🎉🎉🎉
 ----
 这是一个前后端分离的开源WEB项目，英文叫**X.Ryder**，对应中文叫“**莱德**”。项目基于流行的前后端技术进行搭建，集成了AI功能，可以通过这个基础项目快速搭建出一个中后台管理系统的开发框架。
 
-## 技术栈
+## 为什么会有这个项目？
+我所在的团队之前没有统一的开发框架， 有使用若依的、芋道的，还有使用umi、react+antd自行搭建的，各种框架都在用。技术栈不统一，沟通和人员协调都成为问题，技术无法聚焦。借此机会，酝酿出了这个WEB模版。
+采用了时下大厂和国外流行的技术栈进行构建，对大模型友好。使用大模型进行辅助编程时，提供的代码的可靠性更高。
+
+同时，我认为未来的项目都会有AI功能，所以在这个模板中引入了AI相关的功能。可以说用这个模板作为开发框架，出生就带AI。
+
+系统使用Java 21进行开发，主要是考虑到要引入Spring AI开发AI功能，Spring AI也正好发布了1.0.0的版本。Spring AI最低支持Java 17，索性一步到位，直接使用Java 21。但目前来看，Spring AI的版本在快速迭代中（几乎每周都有更新），这会导致有时候打包项目的时候发现找不到符号的情况。
+
+## ChatGPT助力 ✨
+实不相瞒，这个项目的大部分代码都是使用ChatGPT生成的。在ChatGPT的加持下，这个WEB模版可以在两个月内完成。除了在实现了系统管理相关功能的时候，补充了RBAC权限设计相关的理论知识。其他大部分时间都是跟ChatGPT进行你问我答。
+
+## shadcn/ui
+> Beautifully designed components that you can copy and paste into your apps. Made with Tailwind CSS. Open source.
+
+这是shadcn的官网介绍，它的组件直接以源码的方式安装到你的项目中，这意味着你可以直接修改源码来改变组件的形态。对比AntD和ElementUI，shadcn牺牲了便利性，换来了灵活性。
+这可以让我们创造的项目不在千篇一律，使用这个模板开发的系统会让人耳目一新，这估计也是吸引你们来到这里的原因之一吧。
+
+## Spring Data JPA
+在使用Spring Data JPA之前，我使用过很多数据库持久化框架，用的最多最久的是MyBatis。但现在我用上了Spring Data JPA之后，我不想再用其他的框架了。
+
+JPA可以让我不写SQL，或者写很少很简单的SQL。这会提高工作效率，增强SQL的可读性。
+
+## 技术栈 🔨
 前端：React、Vite、Aixos、Zustand、react-router-dom、tailwindcss、shadcn/ui、framer-motion...
 
 后端：Java 21、Spring Boot、Spring Jpa、Spring AI、Spring Security、MYSQL
@@ -37,28 +50,8 @@ const markdownContent = `
 
 ## 生态赋能
 我们采用全球范围内最受欢迎的组件进行构建，依托于蓬勃发展的生态系统，为项目后续的开发与迭代提供了源源不断的社区支持，保障了项目持续进步与创新。
-
-## 主要功能
-1. 登录、token刷新、多次登录失败锁定
-2. 深色模式
-3. AI对话
-4. 系统管理
-    - 用户管理
-    - 角色管理、权限校验
-    - 部门管理
-    - 操作日志
-    - 登录日志
-    - 职位管理
-    - 通知公告
-5. 个人账户
-    - 密码重置
-    - 头像修改
-    - 账户管理
-6. 其他
-    * 403 和 500 页面
-    * 400异常处理
  
-## 📬 联系方式
+## 联系方式 📬
 
 你可以通过这些方式跟我联系💫：
 
@@ -70,37 +63,13 @@ const markdownContent = `
 更新时间: 2024/12/12
 
 `;
-
-const Introduction = () => {
+const Home = () => {
     const theme = getTheme(); // 获取当前主题
     return (
         <div className={`${theme === "dark" ? "prose-dark" : ""}`}>
             <Helmet>
-                <title>简介</title>
+                <title>欢迎</title>
             </Helmet>
-            <header className="flex sticky top-0 bg-background h-16 shrink-0 items-center gap-2 border-b px-4">
-                <div className="flex flex-1 items-center gap-2 px-3">
-                    <SidebarTrigger className="-ml-1"/>
-                    <Separator orientation="vertical" className="mr-2 h-4"/>
-                    <Breadcrumb>
-                        <BreadcrumbList>
-                            <BreadcrumbItem className="hidden md:block">
-                                <BreadcrumbLink href="/">
-                                    首页
-                                </BreadcrumbLink>
-                            </BreadcrumbItem>
-                            <BreadcrumbSeparator className="hidden md:block"/>
-                            <BreadcrumbItem className="hidden md:block">
-                                文档
-                            </BreadcrumbItem>
-                            <BreadcrumbSeparator className="hidden md:block"/>
-                            <BreadcrumbItem className="hidden md:block">
-                                简介
-                            </BreadcrumbItem>
-                        </BreadcrumbList>
-                    </Breadcrumb>
-                </div>
-            </header>
             <div className="prose max-w-4xl mx-auto mt-2 pb-2">
                 <ReactMarkdown
                     components={{
@@ -145,7 +114,7 @@ const Introduction = () => {
             </div>
 
         </div>
-    );
-};
+    )
+}
 
-export default Introduction;
+export default Home

@@ -23,6 +23,7 @@ import Introduction from "@/page/docs/introduction";
 import Start from "@/page/docs/start";
 import Tutorials from "@/page/docs/tutorials";
 import ChangeLog from "@/page/docs/changelog";
+import Home from "@/page/home";
 
 function App() {
 
@@ -33,7 +34,8 @@ function App() {
                     <Layout>
                         <Routes>
                             <Route path="/login" element={<Login />} />
-                            <Route path="/" element={<Dashboard/>}/>
+                            <Route path="/" element={<Home/>}/>
+                            <Route path="/dashboard" element={<Dashboard/>}/>
                             <Route path="/403" element={<Forbidden />} />
                             <Route path="/500" element={<ErrorPage />} />
                             <Route path="/sys/users" element={<User/>}/>

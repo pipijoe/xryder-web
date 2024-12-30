@@ -15,9 +15,11 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import ThemeToggle from "@/components/ThemeToggle";
+import * as React from "react";
 
 export function NavSystem({
-                                projects,
+                                projects, label
                             }: {
     projects: {
         name: string
@@ -28,7 +30,7 @@ export function NavSystem({
 
     return (
         <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-            <SidebarGroupLabel>系统</SidebarGroupLabel>
+            <SidebarGroupLabel>{label}</SidebarGroupLabel>
             <SidebarMenu>
                 {projects.map((item) => (
                     <SidebarMenuItem key={item.name}>
