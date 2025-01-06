@@ -63,7 +63,6 @@ const markdownContent = `
 你可以通过这些方式跟我联系💫：
 
 - Email:  cutesimba@163.com
-- B站:  https://space.bilibili.com/412405219
 
 ----
 

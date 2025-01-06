@@ -81,8 +81,7 @@ spring:
 你可以通过这些方式跟我联系💫：
 
 - Email:  cutesimba@163.com
-- B站:  https://space.bilibili.com/412405219
-- 掘金: https://juejin.cn/creator/home
+
 ----
 
 更新时间: 2024/12/12
