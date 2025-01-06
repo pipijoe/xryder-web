@@ -18,7 +18,6 @@ import {
 } from "@/components/ui/sidebar"
 import {AccountState} from "@/store/accountStore";
 import {NavLink} from "react-router-dom";
-import ThemeToggle from "@/components/ThemeToggle";
 
 export function NavSecondary({
                                  account,
@@ -51,9 +50,6 @@ export function NavSecondary({
                                 <span>GitHub</span>
                             </a>
                         </SidebarMenuButton>
-                    </SidebarMenuItem>
-                    <SidebarMenuItem>
-                        <ThemeToggle />
                     </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarGroupContent>

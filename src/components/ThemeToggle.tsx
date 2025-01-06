@@ -20,12 +20,12 @@ function ThemeToggle() {
 
     return (
         <div className="flex items-center space-x-2">
+            <span className="text-sm">{isDarkMode ? '开' : '关'}</span>
             <Switch
                 checked={isDarkMode}
                 onCheckedChange={handleToggle}
-                className="transition-transform duration-300 h-4 w-8"
+                className="transition-transform duration-300"
             />
-            <span className="text-sm">暗黑模式</span>
         </div>
     );
 }

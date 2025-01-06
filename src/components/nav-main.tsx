@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronRight, type LucideIcon } from "lucide-react"
+import {ChevronRight, type LucideIcon} from "lucide-react"
 
 import {
     Collapsible,
@@ -18,21 +18,23 @@ import {
     SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
 import {NavLink} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 export function NavMain({
                             items,
                         }: {
     items: {
-        title: string
+        title: any
         url: string
         icon?: LucideIcon
         isActive?: boolean
         items?: {
-            title: string
+            title: any
             url: string
         }[]
     }[]
 }) {
+    const {t} = useTranslation();
     return (
         <SidebarGroup>
             <SidebarGroupLabel>Platform</SidebarGroupLabel>
@@ -46,10 +48,13 @@ export function NavMain({
                     >
                         <SidebarMenuItem>
                             <CollapsibleTrigger asChild>
-                                <SidebarMenuButton tooltip={item.title}>
-                                    {item.icon && <item.icon />}
-                                    <span>{item.title}</span>
-                                    <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                                <SidebarMenuButton asChild tooltip={t(item.title)}>
+                                    <NavLink to={item.url}>
+                                        {item.icon && <item.icon/>}
+                                        <span>{t(item.title)}</span>
+                                        <ChevronRight
+                                            className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90"/>
+                                    </NavLink>
                                 </SidebarMenuButton>
                             </CollapsibleTrigger>
                             <CollapsibleContent>
@@ -58,7 +63,7 @@ export function NavMain({
                                         <SidebarMenuSubItem key={subItem.title}>
                                             <SidebarMenuSubButton asChild>
                                                 <NavLink to={subItem.url}>
-                                                    <span>{subItem.title}</span>
+                                                    <span>{t(subItem.title)}</span>
                                                 </NavLink>
                                             </SidebarMenuSubButton>
                                         </SidebarMenuSubItem>

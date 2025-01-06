@@ -154,7 +154,7 @@ const MailSender = () => {
     return (
         <div>
             <Helmet>
-                <title>邮件通知</title>
+                <title>发送站内信</title>
             </Helmet>
             <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
                 <div className="flex flex-1 items-center gap-2 px-3">
@@ -175,7 +175,7 @@ const MailSender = () => {
                             </BreadcrumbItem>
                             <BreadcrumbSeparator className="hidden md:block"/>
                             <BreadcrumbItem>
-                                <BreadcrumbPage>发送邮件</BreadcrumbPage>
+                                <BreadcrumbPage>发送站内信</BreadcrumbPage>
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>
@@ -188,13 +188,13 @@ const MailSender = () => {
                         <span className="sr-only">Back</span>
                     </Button>
                     <h1 className="flex-1 shrink-0 whitespace-nowrap text-xl font-semibold tracking-tight sm:grow-0">
-                        编辑和发送邮件
+                        编辑和发送信息
                     </h1>
                 </div>
                 <Card>
                     <CardHeader>
-                        <CardTitle>新邮件</CardTitle>
-                        <CardDescription>创建并发送新的邮件给部门或者拥有某些职位的人</CardDescription>
+                        <CardTitle>新信息</CardTitle>
+                        <CardDescription>创建并发送新的信息给指定部门或者所有人</CardDescription>
                     </CardHeader>
                     <CardContent>
                         <Form {...form}>
@@ -206,7 +206,7 @@ const MailSender = () => {
                                         <FormItem>
                                             <FormLabel>标题</FormLabel>
                                             <FormControl>
-                                                <Input placeholder="输入邮件标题" {...field}
+                                                <Input placeholder="输入标题" {...field}
                                                        autoComplete={"off"} className='w-2/3'/>
                                             </FormControl>
                                             <FormMessage/>
@@ -222,7 +222,7 @@ const MailSender = () => {
                                             <FormControl>
                                                 <Textarea
                                                     {...field}
-                                                    placeholder="输入邮件内容"
+                                                    placeholder="输入内容"
                                                     rows={5}
                                                 />
                                             </FormControl>
@@ -269,7 +269,7 @@ const MailSender = () => {
                                 </Tabs>
                                 <Button type="submit" disabled={saving}>
                                     <Send className="h-4 w-4 mr-2"/>
-                                    {saving ? '发送中...' : '发送通知'}
+                                    {saving ? '发送中...' : '发送'}
                                 </Button>
                             </form>
                         </Form>

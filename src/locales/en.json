@@ -1,0 +1,15 @@
+{
+  "dashboard": "Dashboard",
+  "monitor": "Monitor",
+  "workplace": "Workplace",
+  "users": "UserManagement",
+  "roles": "RoleManagement",
+  "dept": "Department MGT",
+  "position": "Position MGT",
+  "message": "Site Message",
+  "log": "Operate Log",
+  "login-log": "Login Log",
+  "aichat": "AiChat",
+  "docs": "docs",
+  "system": "System"
+}

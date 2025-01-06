@@ -24,6 +24,7 @@ import Start from "@/page/docs/start";
 import Tutorials from "@/page/docs/tutorials";
 import ChangeLog from "@/page/docs/changelog";
 import Home from "@/page/home";
+import PersonalSetting from "@/page/personal";
 
 function App() {
 
@@ -48,6 +49,7 @@ function App() {
                             <Route path="/sys/login-log" element={<LoginLog/>}/>
                             <Route path="/mail" element={<MailBox />} />
                             <Route path="/account" element={<Account />} />
+                            <Route path="/personal" element={<PersonalSetting />} />
                             <Route path="/chat" element={<AiChat />} />
                             <Route path="/monitor" element={<Monitor />} />
                             <Route path="/docs/introduction" element={<Introduction />} />
