@@ -1,12 +1,6 @@
 "use client"
 
-import {
-    Folder,
-    Forward,
-    MoreHorizontal,
-    Trash2,
-    type LucideIcon,
-} from "lucide-react"
+import {type LucideIcon,} from "lucide-react"
 import {NavLink} from 'react-router-dom';
 import {
     SidebarGroup,
@@ -15,27 +9,29 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import * as React from "react";
+import {useTranslation} from "react-i18next";
 
 export function NavSystem({
-                                projects,
+                                projects, label
                             }: {
     projects: {
-        name: string
+        name: any
         url: string
         icon: LucideIcon
     }[]
 }) {
-
+    const {t} = useTranslation();
     return (
-        <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-            <SidebarGroupLabel>系统</SidebarGroupLabel>
+        <SidebarGroup>
+            <SidebarGroupLabel>{t(label)}</SidebarGroupLabel>
             <SidebarMenu>
                 {projects.map((item) => (
                     <SidebarMenuItem key={item.name}>
-                        <SidebarMenuButton asChild>
+                        <SidebarMenuButton asChild tooltip={t(item.name)}>
                             <NavLink to={item.url}>
                                 <item.icon />
-                                <span>{item.name}</span>
+                                <span>{t(item.name)}</span>
                             </NavLink>
                         </SidebarMenuButton>
                     </SidebarMenuItem>

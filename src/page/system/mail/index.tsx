@@ -95,7 +95,7 @@ const SendingMails = () => {
                             </BreadcrumbItem>
                             <BreadcrumbSeparator className="hidden md:block"/>
                             <BreadcrumbItem>
-                                <BreadcrumbPage>邮件通知</BreadcrumbPage>
+                                <BreadcrumbPage>站内信</BreadcrumbPage>
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>
@@ -105,9 +105,9 @@ const SendingMails = () => {
                 <MailSendToolBar {...toolBarProps}/>
                 <Card>
                     <CardHeader>
-                        <CardTitle>已发通知</CardTitle>
+                        <CardTitle>已发信息</CardTitle>
                         <CardDescription>
-                            查询我发送的通知
+                            查询我发送的信息
                         </CardDescription>
                     </CardHeader>
                     <CardContent>

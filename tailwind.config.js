@@ -8,6 +8,62 @@ export default {
 
   theme: {
   	extend: {
+		typography: {
+			DEFAULT: {
+				css: {
+					color: '#333',
+					a: {
+						color: '#1d4ed8',
+						'&:hover': {
+							color: '#2563eb',
+						},
+					},
+					code: {
+						backgroundColor: '#f3f4f6',
+						padding: '0.2em 0.4em',
+						borderRadius: '4px',
+					},
+					hr: {
+						borderColor: '#e5e7eb', // 设置分割线颜色
+						borderWidth: '1px', // 设置分割线宽度
+						marginTop: '1.5em', // 分割线顶部间距
+						marginBottom: '1.5em', // 分割线底部间距
+					},
+				},
+			},
+			dark: {
+				css: {
+					color: '#f9fafb', // 设置暗黑模式下的文本颜色
+					a: {
+						color: '#93c5fd',
+						'&:hover': {
+							color: '#60a5fa',
+						},
+					},
+					blockquote: {
+						color: '#9ca3af',
+						borderLeftColor: '#4b5563',
+					},
+					code: {
+						// backgroundColor: '#1f2937',
+						color: '#f3f4f6',
+					},
+					h1: { color: '#f9fafb' },
+					h2: { color: '#f9fafb' },
+					h3: { color: '#f9fafb' },
+					p: { color: '#f9fafb' },
+					strong: { color: '#f9fafb' },
+					li: { color: '#f9fafb' },
+					ol: { color: '#f9fafb' },
+					hr: {
+						borderColor: '#374151', // 暗黑模式下的分割线颜色
+						borderWidth: '1px',
+						marginTop: '1.5em',
+						marginBottom: '1.5em',
+					},
+				},
+			},
+		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
@@ -108,6 +164,6 @@ export default {
 		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require('@tailwindcss/typography')],
 }
 

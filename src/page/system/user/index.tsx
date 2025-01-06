@@ -85,6 +85,10 @@ const User = () => {
                     if (res.code === 200) {
                         toast.success("添加成功！")
                         reloadUsers()
+                    } else {
+                        toast.error("添加失败！", {
+                            description: res.data
+                        })
                     }
                 }
             ));
@@ -96,6 +100,10 @@ const User = () => {
                     if (res.code === 200) {
                         toast.success("保存成功！")
                         queryUsers(params)
+                    } else {
+                        toast.error("保存失败！", {
+                            description: res.data
+                        })
                     }
                 }
             ));
@@ -107,6 +115,10 @@ const User = () => {
                 if (res.code === 200) {
                     toast.success("已删除！")
                     queryUsers(params)
+                } else {
+                    toast.error("删除失败！", {
+                        description: res.data
+                    })
                 }
             }
         )
@@ -118,6 +130,10 @@ const User = () => {
                 if (res.code === 200) {
                     toast.success("已修改！")
                     queryUsers(params)
+                } else {
+                    toast.error("操作失败！", {
+                        description: res.data
+                    })
                 }
             }
         )
@@ -129,6 +145,10 @@ const User = () => {
                 if (res.code === 200) {
                     toast.success("已重置！")
                     queryUsers(params)
+                } else {
+                    toast.error("操作失败！", {
+                        description: res.data
+                    })
                 }
             }
         )
@@ -139,6 +159,11 @@ const User = () => {
             (res: any) => {
                 if (res.code === 200) {
                     toast.success("设置成功！")
+                    queryUsers(params)
+                } else {
+                    toast.error("操作失败！", {
+                        description: res.data
+                    })
                 }
             }
         )

@@ -97,6 +97,12 @@ export function NavUser({
                                 账户设置
                             </DropdownMenuItem>
                         </DropdownMenuGroup>
+                        <DropdownMenuGroup>
+                            <DropdownMenuItem onClick={() => navigate('/personal')}>
+                                <UserCog className={'size-4 mr-2'}/>
+                                个性化设置
+                            </DropdownMenuItem>
+                        </DropdownMenuGroup>
                         <DropdownMenuSeparator />
                         <DropdownMenuGroup>
                             <DropdownMenuItem {...supportDialog.triggerProps}>

@@ -60,6 +60,10 @@ const MailBox = () => {
                 if (res.code === 200) {
                     toast.success("已删除！")
                     deleteDialog.dismiss()
+                } else {
+                    toast.error("删除失败！", {
+                        description: res.data
+                    })
                 }
             }
         )
@@ -157,7 +161,7 @@ const MailBox = () => {
                                     </Button>
                                 </div>
                                 <Separator className="my-4" />
-                                <pre className="text-muted-foreground mb-4 whitespace-normal break-words  whitespace-pre-wrap">{selectedMail.content}</pre>
+                                <pre className="text-muted-foreground mb-4 whitespace-normal break-words whitespace-pre-wrap">{selectedMail.content}</pre>
                                 <p className="text-sm text-muted-foreground">
                                     发送时间：{format(selectedMail.createTime, "yyyy-MM-dd HH:mm:ss")}
                                 </p>

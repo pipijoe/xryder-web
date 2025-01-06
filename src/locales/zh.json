@@ -1,0 +1,15 @@
+{
+  "dashboard": "仪表盘",
+  "monitor": "监控",
+  "workplace": "工作台",
+  "users": "用户管理",
+  "roles": "角色管理",
+  "dept": "部门管理",
+  "position": "职位管理",
+  "message": "站内信",
+  "log": "操作日志",
+  "login-log": "登录日志",
+  "aichat": "智能助手",
+  "docs": "文档",
+  "system": "系统"
+}

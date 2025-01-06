@@ -36,7 +36,7 @@ const MailSendToolBar = ({ search, params}) => {
                 <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground"/>
                 <Input
                     type="search"
-                    placeholder="搜索已发送的通知..."
+                    placeholder="搜索已发送的信息..."
                     className="w-full appearance-none bg-background pl-8 shadow-none w-64"
                     value={query}
                     onChange={handleSearch}
@@ -45,7 +45,7 @@ const MailSendToolBar = ({ search, params}) => {
             <div className='flex gap-2 place-items-end'>
                 <Button size="sm" className="h-7 gap-1" onClick={sender}>
                     <Send className="h-3.5 w-3.5"/>
-                    <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">发送通知</span>
+                    <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">发送站内信</span>
                 </Button>
             </div>
         </div>
