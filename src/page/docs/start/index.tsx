@@ -20,7 +20,6 @@ import {
 import {Helmet} from "react-helmet-async";
 import {Prism as SyntaxHighlighter} from "react-syntax-highlighter";
 import {darcula} from "react-syntax-highlighter/dist/cjs/styles/prism";
-import Giscus from "@giscus/react"; // 另一深色主题
 
 const markdownContent = `
 # 开始
@@ -142,23 +141,6 @@ const Start = () => {
                 >
                     {markdownContent}
                 </ReactMarkdown>
-            </div>
-            <div className={'max-w-4xl mx-auto mt-2 pb-2'}>
-                <Giscus
-                    id="comments"
-                    repo="pipijoe/xryder-web"
-                    repoId="R_kgDONWZglA"
-                    category="Announcements"
-                    categoryId="DIC_kwDONWZglM4ClHnl"
-                    mapping="url"
-                    term="start"
-                    reactionsEnabled="1"
-                    emitMetadata="0"
-                    inputPosition="top"
-                    theme={theme}
-                    lang="en"
-                    loading="lazy"
-                />
             </div>
         </div>
     );
