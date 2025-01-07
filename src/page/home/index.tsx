@@ -5,6 +5,16 @@ import {Helmet} from "react-helmet-async";
 import {Prism as SyntaxHighlighter} from "react-syntax-highlighter";
 import {vscDarkPlus} from "react-syntax-highlighter/dist/cjs/styles/prism";
 import ReactMarkdown from "react-markdown";
+import {SidebarTrigger} from "@/components/ui/sidebar";
+import {Separator} from "@/components/ui/separator";
+import {
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbList, BreadcrumbPage,
+    BreadcrumbSeparator
+} from "@/components/ui/breadcrumb";
+import {NavActions} from "@/components/nav-actions";
 
 /**
  * @license MIT
@@ -46,7 +56,7 @@ JPA可以让我不写SQL，或者写很少很简单的SQL。这会提高工作�
 后端：Java 21、Spring Boot、Spring Jpa、Spring AI、Spring Security、MYSQL
 
 ## 设计理念
-本框架的核心聚焦于**系统管理**、**大模型**以及**安全及监控**的实现，致力于最大限度地减少非必要依赖，确保其具备高度的灵活性、精巧的设计、易用性及安全性。
+本框架的核心聚焦于**系统管理**、**大模型**，**安全及监控**的实现，致力于最大限度地减少非必要依赖，确保其具备高度的灵活性、精巧的设计、易用性及安全性。
 
 ## 生态赋能
 我们采用全球范围内最受欢迎的组件进行构建，依托于蓬勃发展的生态系统，为项目后续的开发与迭代提供了源源不断的社区支持，保障了项目持续进步与创新。
@@ -69,10 +79,28 @@ const Home = () => {
             <Helmet>
                 <title>欢迎</title>
             </Helmet>
+            <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+                <div className="flex flex-1 items-center gap-2 px-3">
+                    <SidebarTrigger className="-ml-1"/>
+                    <Separator orientation="vertical" className="mr-2 h-4"/>
+                    <Breadcrumb>
+                        <BreadcrumbList>
+                            <BreadcrumbItem className="hidden md:block">
+                                <BreadcrumbLink href="/">
+                                    欢迎
+                                </BreadcrumbLink>
+                            </BreadcrumbItem>
+                        </BreadcrumbList>
+                    </Breadcrumb>
+                </div>
+                <div className="ml-auto px-3">
+                    <NavActions/>
+                </div>
+            </header>
             <div className="prose max-w-4xl mx-auto mt-2 pb-2">
                 <ReactMarkdown
                     components={{
-                        code({ inline, className, children, ...props }) {
+                        code({inline, className, children, ...props}) {
                             const match = /language-(\w+)/.exec(className || ""); // 获取语言类型
                             return !inline && match ? (
                                 <SyntaxHighlighter
@@ -93,6 +121,19 @@ const Home = () => {
                 >
                     {markdownContent}
                 </ReactMarkdown>
+                <h3 className={'text-xl'}>🎉One More Thing！</h3>
+                <p>云澜AI知识库，帮助团队沉淀知识，提供基于文档的AI问答功能，编辑时的文本润色，提供私有化部署方案。</p>
+                <p className={'text-sm text-secondary-foreground'}>感兴趣可以通过邮件联系：cutesimba@163.com</p>
+                <p>以下是视频演示：</p>
+                <div className="relative w-full h-0 pb-[56.25%]">
+                    <iframe
+                        src="//player.bilibili.com/player.html?isOutside=true&aid=113718788621794&bvid=BV19VCzYUEBa&cid=27544126703&p=1"
+                        scrolling="no" border="0" frameBorder="no" framespacing="0" allowFullScreen="true"
+                        class="absolute top-0 left-0 w-full h-full"
+                    >
+
+                    </iframe>
+                </div>
             </div>
             <div className={'max-w-4xl mx-auto mt-2 pb-2'}>
                 <Giscus
