@@ -20,13 +20,11 @@ import {Helmet} from "react-helmet-async";
 import ThemeToggle from "@/components/ThemeToggle";
 import {Moon, Sun} from "lucide-react";
 import {RiTranslate} from "react-icons/ri";
-import {useTheme} from "@/components/theme-provider";
 import {useTranslation} from "react-i18next";
 import {Switch} from "@/components/ui/switch";
 
 const PersonalSetting = () => {
     const {i18n} = useTranslation();
-    const {theme} = useTheme();
     const toggleLanguage = () => {
         const newLanguage = i18n.language === 'en' ? 'zh' : 'en';
         i18n.changeLanguage(newLanguage);
@@ -65,14 +63,11 @@ const PersonalSetting = () => {
                     </CardHeader>
                     <CardContent>
                         <div className={'flex justify-between hover:bg-muted/50 p-4 rounded-md'}>
-                            <div className={'flex items-center gap-4'}>
-                                {
-                                    theme == 'light' ?
-                                        <Sun
-                                            className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"/> :
-                                        <Moon
-                                            className="h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"/>
-                                }
+                            <div className={'relative flex items-center gap-4'}>
+                                <div className="relative h-[1.2rem] w-[1.2rem]">
+                                    <Sun className="absolute inset-0 h-full w-full rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                                    <Moon className="absolute inset-0 h-full w-full rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                                </div>
                                 <div>
                                     <p>暗黑模式</p>
                                     <p className={'text-muted-foreground text-sm'}>更改系统显示的颜色为深色</p>
