@@ -21,7 +21,7 @@ import {NavLink} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 
 export function NavMain({
-                            items,
+                            items, label
                         }: {
     items: {
         title: any
@@ -37,7 +37,7 @@ export function NavMain({
     const {t} = useTranslation();
     return (
         <SidebarGroup>
-            <SidebarGroupLabel>Platform</SidebarGroupLabel>
+            <SidebarGroupLabel>{t(label)}</SidebarGroupLabel>
             <SidebarMenu>
                 {items.map((item) => (
                     <Collapsible

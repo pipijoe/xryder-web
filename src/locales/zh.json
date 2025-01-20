@@ -1,4 +1,5 @@
 {
+  "welcome": "欢迎",
   "dashboard": "仪表盘",
   "monitor": "智能监控",
   "workplace": "工作台",
@@ -9,7 +10,14 @@
   "message": "站内信",
   "log": "操作日志",
   "login-log": "登录日志",
+  "platform": "平台",
   "aichat": "智能助手",
+  "settings": "设置",
+  "playground": "练习场",
+  "models": "模型",
+  "explorer": "探索",
+  "members": "成员",
+  "bill": "账单",
   "docs": "文档",
   "system": "系统"
 }

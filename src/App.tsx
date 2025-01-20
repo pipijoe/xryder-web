@@ -36,6 +36,7 @@ function App() {
                         <Routes>
                             <Route path="/login" element={<Login />} />
                             <Route path="/" element={<Home/>}/>
+                            <Route path="/welcome" element={<Home/>}/>
                             <Route path="/dashboard" element={<Dashboard/>}/>
                             <Route path="/403" element={<Forbidden />} />
                             <Route path="/500" element={<ErrorPage />} />

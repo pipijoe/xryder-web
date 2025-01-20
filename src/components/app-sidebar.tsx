@@ -6,7 +6,7 @@ import {
     BookOpen,
     Bot,
     BriefcaseBusiness,
-    CircleUserRound,
+    CircleUserRound, House,
     Landmark,
     LayoutDashboard,
     Mail,
@@ -40,7 +40,7 @@ import {useVisitorStore} from "@/store/visitorStore";
 const data = {
     navMain: [
         {
-            title: "Playground",
+            title: "playground",
             url: "/chat",
             icon: SquareTerminal,
             isActive: true,
@@ -50,30 +50,26 @@ const data = {
                     url: "/chat",
                 },
                 {
-                    title: "Starred",
-                    url: "#",
-                },
-                {
-                    title: "Settings",
+                    title: "settings",
                     url: "#",
                 },
             ],
         },
         {
-            title: "Models",
+            title: "models",
             url: "#",
             icon: Bot,
             items: [
                 {
-                    title: "Genesis",
+                    title: "explorer",
                     url: "#",
                 },
                 {
-                    title: "Explorer",
+                    title: "members",
                     url: "#",
                 },
                 {
-                    title: "Quantum",
+                    title: "bill",
                     url: "#",
                 },
             ],
@@ -103,6 +99,11 @@ const data = {
         },
     ],
     workplace: [
+        {
+            name: 'welcome',
+            url: "/welcome",
+            icon: House,
+        },
         {
             name: 'dashboard',
             url: "/dashboard",
@@ -190,7 +191,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                                 </div>
                                 <div className="flex flex-row gap-0.5 leading-none">
                                     <span className="text-2xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent">X.Ryder</span>
-                                    <span className="text-sm">v1.1.2</span>
                                 </div>
                             </a>
                         </SidebarMenuButton>
@@ -199,7 +199,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             </SidebarHeader>
             <SidebarContent className={'custom-scrollbar'}>
                 <NavSystem projects={data.workplace} label={'workplace'}/>
-                <NavMain items={data.navMain} />
+                <NavMain items={data.navMain} label={'platform'}/>
                 {
                     account.permissions && account.permissions.filter((p: string) => p.startsWith('system')).length > 0 &&
                     <NavSystem projects={data.system} label={'system'}/>

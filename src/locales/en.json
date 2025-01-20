@@ -1,4 +1,5 @@
 {
+  "welcome": "Welcome",
   "dashboard": "Dashboard",
   "monitor": "Monitor",
   "workplace": "Workplace",
@@ -9,7 +10,14 @@
   "message": "Site Message",
   "log": "Operate Log",
   "login-log": "Login Log",
+  "platform": "Platform",
   "aichat": "AiChat",
+  "settings": "Settings",
+  "playground": "Playground",
+  "models": "Models",
+  "explorer": "Explorer",
+  "members": "Members",
+  "bill": "Bill",
   "docs": "docs",
   "system": "System"
 }
