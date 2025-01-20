@@ -3,12 +3,14 @@ import empty from '../assets/empty.png'
 import file from '../assets/file.png'
 import image from '../assets/image.png'
 import agent from '../assets/agent.svg'
+import alipay from '../assets/payment_code/alipay_code.jpg'
 
 export const logoImg = logo
 export const emptyImg = empty
 export const fileImg = file
 export const imageImg = image
 export const agentImg = agent
+export const alipayImg = alipay
 import { JSEncrypt } from 'jsencrypt';
 
 export const encryptPassword = (password, publicKey) => {
