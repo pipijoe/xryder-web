@@ -22,8 +22,25 @@ import {Prism as SyntaxHighlighter} from "react-syntax-highlighter";
 import {vscDarkPlus} from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 const markdownContent = `
-# 建设中...
+# 更新日志
 
+## 2025/1/20
+- 增加智能监控
+- 侧边栏优化
+
+## 2025/1/6
+- 增加个性化设置
+- 增加中英文切换
+- 一些bug的修复
+
+## 2025之前
+- 系统管理功能
+- 智能对话功能
+- 个人设置
+- 登录登出
+- 全局错误提示
+- token无感刷新
+- 修复智能助手中，切换页面导致sse连接断开等bug
 
 `;
 
