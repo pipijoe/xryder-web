@@ -1,6 +1,5 @@
 "use client"
 
-import {type LucideIcon,} from "lucide-react"
 import {NavLink} from 'react-router-dom';
 import {
     SidebarGroup,
@@ -11,6 +10,8 @@ import {
 } from "@/components/ui/sidebar"
 import * as React from "react";
 import {useTranslation} from "react-i18next";
+import {Badge} from "@/components/ui/badge";
+import {LucideIcon} from "lucide-react";
 
 export function NavSystem({
                                 projects, label
@@ -32,6 +33,7 @@ export function NavSystem({
                             <NavLink to={item.url}>
                                 <item.icon />
                                 <span>{t(item.name)}</span>
+                                {item.name == 'monitor' && <Badge className={'font-medium'} variant="secondary">Beta</Badge>}
                             </NavLink>
                         </SidebarMenuButton>
                     </SidebarMenuItem>
