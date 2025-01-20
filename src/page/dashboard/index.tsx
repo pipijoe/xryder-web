@@ -8,10 +8,15 @@ import {
 } from "@/components/ui/breadcrumb";
 import {Separator} from "@/components/ui/separator";
 import {NavActions} from "@/components/nav-actions"
+import React from "react";
+import {Helmet} from "react-helmet-async";
 
 const Dashboard = () => {
     return (
         <div>
+            <Helmet>
+                <title>仪表盘</title>
+            </Helmet>
             <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
                 <div className="flex flex-1 items-center gap-2 px-3">
                     <SidebarTrigger className="-ml-1"/>
