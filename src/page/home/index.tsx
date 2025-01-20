@@ -10,8 +10,7 @@ import {
     Breadcrumb,
     BreadcrumbItem,
     BreadcrumbLink,
-    BreadcrumbList, BreadcrumbPage,
-    BreadcrumbSeparator
+    BreadcrumbList,
 } from "@/components/ui/breadcrumb";
 import {NavActions} from "@/components/nav-actions";
 
@@ -120,19 +119,6 @@ const Home = () => {
                 >
                     {markdownContent}
                 </ReactMarkdown>
-                <h3 className={'text-xl'}>🎉One More Thing！</h3>
-                <p>云澜AI知识库，帮助团队沉淀知识，提供基于文档的AI问答功能，编辑时的文本润色，提供私有化部署方案。</p>
-                <p className={'text-sm text-secondary-foreground'}>感兴趣可以通过邮件联系：cutesimba@163.com</p>
-                <p>以下是视频演示：</p>
-                <div className="relative w-full h-0 pb-[56.25%]">
-                    <iframe
-                        src="//player.bilibili.com/player.html?isOutside=true&aid=113718788621794&bvid=BV19VCzYUEBa&cid=27544126703&p=1"
-                        scrolling="no" border="0" frameBorder="no" framespacing="0" allowFullScreen="true"
-                        class="absolute top-0 left-0 w-full h-full"
-                    >
-
-                    </iframe>
-                </div>
             </div>
         </div>
     )
