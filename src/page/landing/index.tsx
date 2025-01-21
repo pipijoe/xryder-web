@@ -9,6 +9,7 @@ import LandingHeader from "@/page/landing/components/LandingHeader";
 import React from "react";
 import {Helmet} from "react-helmet-async";
 import LandingContent from "@/page/landing/components/LandingContent";
+import LandingFooter from "@/page/landing/components/LandingFooter";
 
 const LandingPage = () => {
     return (
@@ -18,7 +19,7 @@ const LandingPage = () => {
             </Helmet>
             <LandingHeader />
             <LandingContent />
-            <p>这是着陆页！</p>
+            <LandingFooter />
 
         </div>
     )

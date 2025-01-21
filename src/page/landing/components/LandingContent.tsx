@@ -11,7 +11,109 @@ import * as React from "react";
 import {RainbowButton} from "@/components/ui/rainbow-button";
 import {useNavigate} from "react-router-dom";
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
+import { AuroraText } from "@/components/ui/aurora-text";
+import {cn} from "@/lib/utils";
+import Marquee from "@/components/ui/marquee";
+const reviews = [
+    {
+        name: "Java",
+        version: "21",
+        body: "长期支持版本，支持Spring Ai",
+        img: "https://avatar.vercel.sh/jack",
+    },
+    {
+        name: "Spring Boot",
+        version: "3.4.0",
+        body: "集成Spring Data Jpa和Spring Security",
+        img: "https://avatar.vercel.sh/jill",
+    },
+    {
+        name: "Spring AI",
+        version: "1.0.0",
+        body: "一个面向 AI 工程的应用框架，其目标是将 Spring 生态系统应用到 AI 领域",
+        img: "https://avatar.vercel.sh/john",
+    },
+    {
+        name: "Vite",
+        version: "6.0.x",
+        body: "Vite 是一个超快速的前端构建工具，推动着下一代网络应用的发展",
+        img: "https://avatar.vercel.sh/james",
+    },
+    {
+        name: "React",
+        version: "18.3.1",
+        body: "用于构建 Web 和原生交互界面的库",
+        img: "https://avatar.vercel.sh/jane",
+    },
+    {
+        name: "react-router-dom",
+        version: "7.0.1",
+        body: "React 生态系统中最常用的路由库之一，用于在单页应用程序 (SPA) 中实现客户端路由功能。",
+        img: "https://avatar.vercel.sh/jenny",
+    },
+    {
+        name: "zustand",
+        version: "5.0.1",
+        body: "一个轻量、高效的 React 状态管理库，采用简单的 API 和无样板代码的方式管理全局和局部状态",
+        img: "https://avatar.vercel.sh/james",
+    },
+    {
+        name: "zod",
+        version: "3.23.8",
+        body: "一个 TypeScript 优化的模式声明与验证库，用于安全地解析和验证数据结构",
+        img: "https://avatar.vercel.sh/jack",
+    },
+    {
+        name: "axios",
+        version: "1.7.8",
+        body: "一个基于 Promise 的 JavaScript HTTP 客户端，用于在浏览器和 Node.js 中发送请求和处理响应",
+        img: "https://avatar.vercel.sh/john",
+    },
+    {
+        name: "tailwindcss",
+        version: "3.4.15",
+        body: "一个实用优先的 CSS 框架，内置了诸如 flex、pt-4、text-center 和 rotate-90 等类，可以直接在标记中组合使用，构建任何设计。",
+        img: "https://avatar.vercel.sh/jane",
+    },
+];
 
+const firstRow = reviews.slice(0, reviews.length / 2);
+const secondRow = reviews.slice(reviews.length / 2);
+
+const ReviewCard = ({
+                        img,
+                        name,
+                        version,
+                        body,
+                    }: {
+    img: string;
+    name: string;
+    version: string;
+    body: string;
+}) => {
+    return (
+        <figure
+            className={cn(
+                "relative w-64 cursor-pointer overflow-hidden rounded-xl border p-4",
+                // light styles
+                "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
+                // dark styles
+                "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
+            )}
+        >
+            <div className="flex flex-row items-center gap-2">
+                <img className="rounded-full" width="32" height="32" alt="" src={img} />
+                <div className="flex flex-col">
+                    <figcaption className="text-sm font-medium dark:text-white">
+                        {name}
+                    </figcaption>
+                    <p className="text-xs font-medium dark:text-white/40">{version}</p>
+                </div>
+            </div>
+            <blockquote className="mt-2 text-sm">{body}</blockquote>
+        </figure>
+    );
+};
 function LandingContent() {
     const navigate = useNavigate();
     return (
@@ -122,8 +224,8 @@ function LandingContent() {
                                 gap-6 mt-24">
                     <span className="text-4xl font-semibold
                                      bg-gradient-to-br
-                                     from-sky-400 to-gray-500
-                                     dark:from-sky-400 dark:to-white
+                                     from-lime-400 to-gray-500
+                                     dark:from-lime-400 dark:to-white
                                      text-transparent bg-clip-text">
                     用X.Ryder做开发
                     </span>
@@ -184,10 +286,45 @@ function LandingContent() {
                             justify-center overflow-hidden
                             rounded-lg bg-background
                             gap-6 mt-24">
+                <div className={'text-4xl font-bold tracking-tighter'}>
+                    <AuroraText>流行和可靠的技术路线</AuroraText>
+                </div>
+                <p className={'text-muted-foreground font-medium text-lg'}>用于构建该项目的工具、框架、编程语言和技术</p>
+                <div>
+                    <Marquee pauseOnHover className="[--duration:20s]">
+                        {firstRow.map((review) => (
+                            <ReviewCard key={review.version} {...review} />
+                        ))}
+                    </Marquee>
+                    <Marquee reverse pauseOnHover className="[--duration:20s]">
+                        {secondRow.map((review) => (
+                            <ReviewCard key={review.version} {...review} />
+                        ))}
+                    </Marquee>
+                    <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
+                </div>
+            </div>
+            <div className="relative flex
+                            mb-8 w-full
+                            flex-col items-center
+                            justify-center overflow-hidden
+                            rounded-lg bg-background
+                            gap-6 mt-24">
                     <span className="text-4xl font-semibold bg-clip-text">
                     免费 & 开源
                     </span>
                 <p className={'text-muted-foreground font-medium text-lg'}>X.Ryder基于MIT许可，并将始终保持免费和开源</p>
+                <div className={'flex gap-4'}>
+                    <RainbowButton className={'font-semibold'} onClick={() => navigate('/login')}>
+                        Demo
+                    </RainbowButton>
+                    <Button variant={"outline"} className={'gap-2 font-semibold'}
+                            onClick={() => window.open("https://github.com/pipijoe/xryder-web", "_blank")}>
+                        <FaGithub/>
+                        GitHub
+                    </Button>
+                </div>
             </div>
         </div>
 
