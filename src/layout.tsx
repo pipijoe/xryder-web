@@ -15,7 +15,7 @@ import GlobalErrorHandler from "@/GlobalErrorHandler";
 export default function Layout({ children }: { children: React.ReactNode }) {
     const location = useLocation();
     // 不应用 Layout 的路径
-    const noLayoutPaths = ['/login', '/403', '/500'];
+    const noLayoutPaths = ['/login', '/403', '/500', '/'];
 
     if (noLayoutPaths.includes(location.pathname)) {
         return <>

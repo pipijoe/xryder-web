@@ -1,0 +1,18 @@
+.container-wrapper {
+    max-width: 1376px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+}
+.container-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    border-color: hsl(var(--border)/.3);
+}
+.container {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1536px;
+}

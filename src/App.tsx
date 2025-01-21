@@ -25,6 +25,7 @@ import Tutorials from "@/page/docs/tutorials";
 import ChangeLog from "@/page/docs/changelog";
 import Home from "@/page/home";
 import PersonalSetting from "@/page/personal";
+import LandingPage from "@/page/landing";
 
 function App() {
 
@@ -35,7 +36,7 @@ function App() {
                     <Layout>
                         <Routes>
                             <Route path="/login" element={<Login />} />
-                            <Route path="/" element={<Home/>}/>
+                            <Route path="/" element={<LandingPage/>}/>
                             <Route path="/welcome" element={<Home/>}/>
                             <Route path="/dashboard" element={<Dashboard/>}/>
                             <Route path="/403" element={<Forbidden />} />
