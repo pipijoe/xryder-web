@@ -8,6 +8,11 @@ import vite from '../assets/vite.svg'
 import chatbot from '../assets/chatbot.png'
 import tailscn from '../assets/tailscn.png'
 import monitor from '../assets/monitor.png'
+import design01 from '../assets/design01.png'
+import design02 from '../assets/design02.png'
+import design03 from '../assets/design03.png'
+import design04 from '../assets/design04.png'
+import design05 from '../assets/design05.png'
 
 export const logoImg = logo
 export const emptyImg = empty
@@ -19,6 +24,11 @@ export const viteImg = vite
 export const chatbotImg = chatbot
 export const tailscnImg = tailscn
 export const monitorImg = monitor
+export const design01Img = design01
+export const design02Img = design02
+export const design03Img = design03
+export const design04Img = design04
+export const design05Img = design05
 import { JSEncrypt } from 'jsencrypt';
 
 export const encryptPassword = (password, publicKey) => {

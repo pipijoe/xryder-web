@@ -19,10 +19,61 @@ import {useInView} from 'react-intersection-observer';
 import {IoIosArrowForward} from "react-icons/io";
 import {AnimatedBeamMultipleOutput} from "@/page/landing/components/Beam";
 import {MorphingText} from "@/components/magicui/morphing-text";
-import {chatbotImg, tailscnImg, monitorImg} from '@/utils'
-import {ChartContainer} from "@/components/ui/chart";
-import {Bar, BarChart, Rectangle, XAxis} from "recharts";
+import {chatbotImg, tailscnImg, monitorImg, design01Img, design02Img, design03Img, design04Img, design05Img} from '@/utils'
+import {
+    BellIcon,
+    CalendarIcon,
+    FileTextIcon,
+    GlobeIcon,
+    InputIcon,
+} from "@radix-ui/react-icons";
+
+import { BentoCard, BentoGrid } from "@/components/ui/bento-grid";
 import AiAgentAvatar from "@/components/AiAgentAvatar";
+import {MdOutlineFlightTakeoff} from "react-icons/md";
+import {SiDevpost} from "react-icons/si";
+import {GiEcology} from "react-icons/gi";
+import {FaArrowTrendUp} from "react-icons/fa6";
+import {AiOutlineOpenAI} from "react-icons/ai";
+
+const features = [
+    {
+        Icon: SiDevpost ,
+        name: "为全栈而生",
+        description: "在AI时代，助你成为10倍开发者",
+        background: <img className="absolute -right-10 -top-10 opacity-60" src={design01Img}/>,
+        className: "lg:row-start-1 lg:row-end-4 lg:col-start-2 lg:col-end-3",
+    },
+    {
+        Icon: MdOutlineFlightTakeoff,
+        name: "轻量",
+        description: "依赖少，启动快，开发快，更易维护",
+        background: <img className="absolute -right-20 top-0 scale-105 opacity-60" src={design02Img}/>,
+        className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3",
+    },
+    {
+        Icon: AiOutlineOpenAI ,
+        name: "大模型友好",
+        description: "使用最流行的技术，大模型可以有更好的回答",
+        background: <img className="absolute -right-20 -top-20 opacity-60" src={design03Img}/>,
+        className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4",
+    },
+    {
+        Icon: FaArrowTrendUp ,
+        name: "前卫",
+        description: "使用国内大厂，国外流行的技术栈",
+        background: <img className="absolute -right-20 -top-20 opacity-60" src={design04Img}/>,
+        className: "lg:col-start-3 lg:col-end-3 lg:row-start-1 lg:row-end-2",
+    },
+    {
+        Icon: GiEcology ,
+        name: "生态赋能",
+        description:
+            "依托于蓬勃发展的生态系统，为项目后续的开发与迭代提供了源源不断的社区支持，保障了项目持续进步与创新。",
+        background: <img className="absolute -right-20 -top-0 opacity-60" src={design05Img}/>,
+        className: "lg:col-start-3 lg:col-end-3 lg:row-start-2 lg:row-end-4",
+    },
+];
 
 const texts = [
     "社交网络",
@@ -215,7 +266,7 @@ function LandingContent() {
                         animate={inView1 ? {x: 0, opacity: 1} : {}}
                         transition={{type: 'tween', duration: 0.5}}
                     >
-                        <Card className={'h-64 rounded-lg overflow-hidden'}>
+                        <Card className={'h-64 rounded-lg overflow-hidden shadow-lg'}>
                             <CardContent className="relative overflow-hidden h-36">
                                 <div className={'absolute -top-16 -right-2'}>
                                     <img src={tailscnImg} alt={'tailwind'}
@@ -237,13 +288,13 @@ function LandingContent() {
                         animate={inView2 ? {x: 0, opacity: 1} : {}}
                         transition={{type: 'tween', duration: 0.5}}
                     >
-                        <Card className={'h-64 rounded-lg overflow-hidden'}>
+                        <Card className={'h-64 rounded-lg overflow-hidden shadow-lg'}>
                             <CardHeader>
                                 <CardTitle className={'border-l-4 border-sky-500 pl-2'}>智能监控</CardTitle>
                                 <CardDescription>基于text2sql技术实现灵活的可视化监控信息展示</CardDescription>
                             </CardHeader>
                             <CardContent className="relative overflow-hidden h-48">
-                                <div className={'absolute left-0 -top-20'}>
+                                <div className={'absolute -right-2 -top-16'}>
                                     <img src={monitorImg} alt={'monitor'}
                                          className="object-cover transition-transform duration-500 hover:scale-110"
                                     />
@@ -260,7 +311,7 @@ function LandingContent() {
                         animate={inView3 ? {x: 0, opacity: 1} : {}}
                         transition={{type: 'tween', duration: 1}}
                     >
-                        <Card className={'h-64'}>
+                        <Card className={'h-64 shadow-lg'}>
                             <CardHeader>
                                 <CardTitle className={'border-l-4 border-sky-600 pl-2'}>丰富动效</CardTitle>
                                 <CardDescription>通过 Framer Motion 实现流畅交互动画，结合 Lottie
@@ -280,7 +331,7 @@ function LandingContent() {
                         animate={inView4 ? {x: 0, opacity: 1} : {}}
                         transition={{type: 'tween', duration: 1}}
                     >
-                        <Card className="h-64 rounded-lg overflow-hidden">
+                        <Card className="h-64 rounded-lg overflow-hidden shadow-lg">
                             <CardContent className="relative h-40 overflow-hidden">
                                 <div className="absolute -top-4 -right-2">
                                     <img
@@ -314,54 +365,11 @@ function LandingContent() {
                     </span>
                     <p className={'text-muted-foreground font-medium text-lg'}>开心愉快</p>
                 </div>
-                <div className={'flex gap-4 max-w-4xl mx-auto mb-4'}>
-                    <div className="flex-1 basis-1/3">
-                        <Card className={'h-64'}>
-                            <CardHeader>
-                                <CardTitle>轻量</CardTitle>
-                                <CardDescription>启动快，开发快，部署快，更易上手</CardDescription>
-                            </CardHeader>
-                        </Card>
-                    </div>
-                    <div className="flex-2 basis-2/3">
-                        <Card className={'h-64'}>
-                            <CardContent>
-                                <p>这是内容</p>
-                                <p>这是内容</p>
-                                <p>这是内容</p>
-                                <p>这是内容</p>
-                            </CardContent>
-                            <CardHeader>
-                                <CardTitle>前卫</CardTitle>
-                                <CardDescription>使用国内大厂、国际流行的技术栈</CardDescription>
-                            </CardHeader>
-                        </Card>
-                    </div>
-                </div>
-                <div className={'flex gap-4 max-w-4xl mx-auto'}>
-                    <div className="flex-2 basis-2/3">
-                        <Card className={'h-64'}>
-                            <CardContent>
-                                <p>这是内容</p>
-                                <p>这是内容</p>
-                                <p>这是内容</p>
-                                <p>这是内容</p>
-                            </CardContent>
-                            <CardHeader>
-                                <CardTitle>大模型友好</CardTitle>
-                                <CardDescription>使用最流行的技术，大模型可以有更好的回答</CardDescription>
-                            </CardHeader>
-                        </Card>
-                    </div>
-                    <div className="flex-1 basis-1/3">
-                        <Card className={'h-64'}>
-                            <CardHeader>
-                                <CardTitle>为全栈而生</CardTitle>
-                                <CardDescription>在AI时代，你就是10x程序员</CardDescription>
-                            </CardHeader>
-                        </Card>
-                    </div>
-                </div>
+                <BentoGrid className="lg:grid-rows-3 max-w-6xl mx-auto">
+                    {features.map((feature) => (
+                        <BentoCard key={feature.name} {...feature} />
+                    ))}
+                </BentoGrid>
             </div>
             <div className="relative flex
                             mb-8 w-full

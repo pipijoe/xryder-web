@@ -38,7 +38,7 @@ function Login() {
                     description: res.data
                 })
             } else if (res.code == 200) {
-                navigate('/');
+                navigate('/welcome');
                 localStorage.setItem('token', res.data.token)
                 localStorage.setItem('refreshToken', res.data.refreshToken)
             }
