@@ -4,6 +4,10 @@ import file from '../assets/file.png'
 import image from '../assets/image.png'
 import agent from '../assets/agent.svg'
 import alipay from '../assets/payment_code/alipay_code.jpg'
+import vite from '../assets/vite.svg'
+import chatbot from '../assets/chatbot.png'
+import tailscn from '../assets/tailscn.png'
+import monitor from '../assets/monitor.png'
 
 export const logoImg = logo
 export const emptyImg = empty
@@ -11,6 +15,10 @@ export const fileImg = file
 export const imageImg = image
 export const agentImg = agent
 export const alipayImg = alipay
+export const viteImg = vite
+export const chatbotImg = chatbot
+export const tailscnImg = tailscn
+export const monitorImg = monitor
 import { JSEncrypt } from 'jsencrypt';
 
 export const encryptPassword = (password, publicKey) => {

@@ -12,9 +12,10 @@ import { motion } from 'framer-motion';
 interface AiAgentAvatarProps {
     onClick?: () => void;
     status: 'working' | 'ready';
+    className? : string
 }
 
-const AiAgentAvatar: React.FC<AiAgentAvatarProps> = ({ onClick, status }) => {
+const AiAgentAvatar: React.FC<AiAgentAvatarProps> = ({ onClick, status, className }) => {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const animationRef = useRef<lottie.AnimationItem | null>(null);
 
@@ -48,7 +49,7 @@ const AiAgentAvatar: React.FC<AiAgentAvatarProps> = ({ onClick, status }) => {
     return (
         <motion.div
             ref={containerRef}
-            className="w-16 h-16 cursor-pointer"
+            className={`w-16 h-16 cursor-pointer ${className}` }
             onClick={onClick}
             animate={{
                 scale: [1, 1.08, 1], // 呼吸动画的缩放

@@ -11,9 +11,30 @@ import * as React from "react";
 import {RainbowButton} from "@/components/ui/rainbow-button";
 import {useNavigate} from "react-router-dom";
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
-import { AuroraText } from "@/components/ui/aurora-text";
+import {AuroraText} from "@/components/ui/aurora-text";
 import {cn} from "@/lib/utils";
 import Marquee from "@/components/ui/marquee";
+import {motion} from 'framer-motion';
+import {useInView} from 'react-intersection-observer';
+import {IoIosArrowForward} from "react-icons/io";
+import {AnimatedBeamMultipleOutput} from "@/page/landing/components/Beam";
+import {MorphingText} from "@/components/magicui/morphing-text";
+import {chatbotImg, tailscnImg, monitorImg} from '@/utils'
+import {ChartContainer} from "@/components/ui/chart";
+import {Bar, BarChart, Rectangle, XAxis} from "recharts";
+import AiAgentAvatar from "@/components/AiAgentAvatar";
+
+const texts = [
+    "社交网络",
+    "CMS",
+    "企业管理系统",
+    "在线教育",
+    "在线论坛",
+    "政府服务系统",
+    "物流管理系统",
+    "大数据分析系统",
+];
+
 const reviews = [
     {
         name: "Java",
@@ -102,7 +123,7 @@ const ReviewCard = ({
             )}
         >
             <div className="flex flex-row items-center gap-2">
-                <img className="rounded-full" width="32" height="32" alt="" src={img} />
+                <img className="rounded-full" width="32" height="32" alt="" src={img}/>
                 <div className="flex flex-col">
                     <figcaption className="text-sm font-medium dark:text-white">
                         {name}
@@ -114,32 +135,48 @@ const ReviewCard = ({
         </figure>
     );
 };
+
 function LandingContent() {
     const navigate = useNavigate();
+    // 使用 Intersection Observer 检测卡片是否可见
+    const [ref1, inView1] = useInView({triggerOnce: true, threshold: 0.2});
+    const [ref2, inView2] = useInView({triggerOnce: true, threshold: 0.2});
+    const [ref3, inView3] = useInView({triggerOnce: true, threshold: 0.2});
+    const [ref4, inView4] = useInView({triggerOnce: true, threshold: 0.2});
+
     return (
         <div>
             <div className="relative flex
                             h-[500px] w-full
                             flex-col items-center
                             justify-center overflow-hidden
-                            rounded-lg bg-background
-                            gap-6">
-              <span className="w-[400px] leading-normal
-                              pointer-events-none whitespace-pre-wrap
-                              bg-gradient-to-b from-black
-                              to-gray-300/80 bg-clip-text
-                              text-center text-6xl
-                              font-semibold leading-none
-                              text-transparent dark:from-white
-                              dark:to-slate-900/10">
-                AI时代的WEB开发模板
-              </span>
-                <div className={'w-[320px] text-muted-foreground text-lg mt-4'}>
-                    X.Ryder（莱德）是一个轻量、灵活、具备AI功能的WEB开发模板
+                            rounded-lg
+                            gap-6 bg-gradient-to-b from-background via-sky-300 to-background">
+                 <span className="w-[400px] leading-normal
+                  pointer-events-none whitespace-pre-wrap
+                  bg-gradient-to-b from-gray-800
+                  to-gray-500 bg-clip-text
+                  text-center text-6xl
+                  font-semibold leading-none
+                  text-transparent dark:from-gray-100 dark:to-gray-200
+                  drop-shadow-sm dark:drop-shadow-[0_2px_3px_rgba(255,255,255,0.3)]">
+    AI时代的WEB开发模板
+  </span>
+                <div className={'w-[360px] text-lg mt-4'}>
+                    X.Ryder（莱德）是一个基于Java和React的轻量、灵活、具备AI功能的WEB开发模板
                 </div>
                 <div className={'flex gap-4'}>
                     <RainbowButton className={'font-semibold'} onClick={() => navigate('/login')}>
                         Demo
+                        <motion.div
+                            className="ml-2"
+                            variants={{
+                                hover: {x: 8}, // 当父组件触发 hover 时，箭头向右移动
+                            }}
+                            transition={{type: 'tween', duration: 0.3}} // 设置缓动效果
+                        >
+                            <IoIosArrowForward/>
+                        </motion.div>
                     </RainbowButton>
                     <Button variant={"outline"} className={'gap-2 font-semibold'}
                             onClick={() => window.open("https://github.com/pipijoe/xryder-web", "_blank")}>
@@ -148,13 +185,19 @@ function LandingContent() {
                     </Button>
                 </div>
             </div>
+            <AnimatedBeamMultipleOutput/>
+
+            <div className={'flex items-center flex-col'}>
+                <p className={'font-medium text-muted-foreground mb-2'}> 你可以用它来做 </p>
+                <MorphingText texts={texts}/>
+            </div>
             <div>
                 <div className="relative flex
                                 mb-8 w-full
                                 flex-col items-center
                                 justify-center overflow-hidden
                                 rounded-lg bg-background
-                                gap-6">
+                                gap-6 mt-24">
                     <span className="text-4xl font-semibold
                                      bg-gradient-to-br
                                      from-sky-400 to-gray-500
@@ -165,54 +208,94 @@ function LandingContent() {
                     <p className={'text-muted-foreground font-medium text-lg'}>告别千篇一律，我要与众不同</p>
                 </div>
                 <div className={'flex gap-4 max-w-4xl mx-auto mb-4'}>
-                    <div className="flex-2 basis-2/3">
-                        <Card className={'h-64'}>
-                            <CardContent>
-                                <p>这是内容</p>
-                                <p>这是内容</p>
-                                <p>这是内容</p>
-                                <p>这是内容</p>
+                    <motion.div
+                        ref={ref1}
+                        className="flex-2 basis-2/3"
+                        initial={{x: -100, opacity: 0}}
+                        animate={inView1 ? {x: 0, opacity: 1} : {}}
+                        transition={{type: 'tween', duration: 0.5}}
+                    >
+                        <Card className={'h-64 rounded-lg overflow-hidden'}>
+                            <CardContent className="relative overflow-hidden h-36">
+                                <div className={'absolute -top-16 -right-2'}>
+                                    <img src={tailscnImg} alt={'tailwind'}
+                                         className="object-cover transition-transform duration-500 hover:scale-110"
+                                    />
+                                </div>
                             </CardContent>
                             <CardHeader>
-                                <CardTitle>高可定制</CardTitle>
-                                <CardDescription>基于 shadcn/ui 和 TailwindCSS，提供可访问、可定制的高质量组件，用于快速构建优雅的 React 用户界面。</CardDescription>
+                                <CardTitle className={'border-l-4 border-sky-400 pl-2'}>高可定制</CardTitle>
+                                <CardDescription>基于 shadcn/ui 和 TailwindCSS，提供可访问、可定制的高质量组件，用于快速构建优雅的
+                                    React 用户界面。</CardDescription>
                             </CardHeader>
                         </Card>
-                    </div>
-                    <div className="flex-1 basis-1/3">
-                        <Card className={'h-64'}>
+                    </motion.div>
+                    <motion.div
+                        ref={ref2}
+                        className="flex-1 basis-1/3"
+                        initial={{x: 100, opacity: 0}}
+                        animate={inView2 ? {x: 0, opacity: 1} : {}}
+                        transition={{type: 'tween', duration: 0.5}}
+                    >
+                        <Card className={'h-64 rounded-lg overflow-hidden'}>
                             <CardHeader>
-                                <CardTitle>自带AI</CardTitle>
-                                <CardDescription>内置大模型对话功能</CardDescription>
-                            </CardHeader>
-                        </Card>
-                    </div>
-
-                </div>
-                <div className={'flex gap-4 max-w-4xl mx-auto'}>
-                    <div className="flex-1 basis-1/3">
-                        <Card className={'h-64'}>
-                            <CardHeader>
-                                <CardTitle>丰富动效</CardTitle>
-                                <CardDescription>通过 Framer Motion 实现流畅交互动画，结合 Lottie 渲染精美的矢量动画，为应用提供丰富多样且高性能的动效体验</CardDescription>
-                            </CardHeader>
-                        </Card>
-                    </div>
-                    <div className="flex-2 basis-2/3">
-                        <Card className={'h-64'}>
-                            <CardContent>
-                                <p>这是内容</p>
-                                <p>这是内容</p>
-                                <p>这是内容</p>
-                                <p>这是内容</p>
-                            </CardContent>
-                            <CardHeader>
-                                <CardTitle>智能监控</CardTitle>
+                                <CardTitle className={'border-l-4 border-sky-500 pl-2'}>智能监控</CardTitle>
                                 <CardDescription>基于text2sql技术实现灵活的可视化监控信息展示</CardDescription>
                             </CardHeader>
+                            <CardContent className="relative overflow-hidden h-48">
+                                <div className={'absolute left-0 -top-20'}>
+                                    <img src={monitorImg} alt={'monitor'}
+                                         className="object-cover transition-transform duration-500 hover:scale-110"
+                                    />
+                                </div>
+                            </CardContent>
                         </Card>
-                    </div>
-
+                    </motion.div>
+                </div>
+                <div className={'flex gap-4 max-w-4xl mx-auto'}>
+                    <motion.div
+                        ref={ref3}
+                        className="flex-1 basis-1/3"
+                        initial={{x: -100, opacity: 0}}
+                        animate={inView3 ? {x: 0, opacity: 1} : {}}
+                        transition={{type: 'tween', duration: 1}}
+                    >
+                        <Card className={'h-64'}>
+                            <CardHeader>
+                                <CardTitle className={'border-l-4 border-sky-600 pl-2'}>丰富动效</CardTitle>
+                                <CardDescription>通过 Framer Motion 实现流畅交互动画，结合 Lottie
+                                    渲染精美的矢量动画，为应用提供丰富多样且高性能的动效体验</CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <div className={'flex justify-end'}>
+                                    <AiAgentAvatar status={'ready'} className={'w-24 h-24'}/>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    </motion.div>
+                    <motion.div
+                        ref={ref4}
+                        className="flex-2 basis-2/3"
+                        initial={{x: 100, opacity: 0}}
+                        animate={inView4 ? {x: 0, opacity: 1} : {}}
+                        transition={{type: 'tween', duration: 1}}
+                    >
+                        <Card className="h-64 rounded-lg overflow-hidden">
+                            <CardContent className="relative h-40 overflow-hidden">
+                                <div className="absolute -top-4 -right-2">
+                                    <img
+                                        src={chatbotImg}
+                                        alt="chatbot"
+                                        className="object-cover transition-transform duration-500 hover:scale-110"
+                                    />
+                                </div>
+                            </CardContent>
+                            <CardHeader>
+                                <CardTitle className={'border-l-4 border-sky-700 pl-2'}>自带AI</CardTitle>
+                                <CardDescription>内置智能对话助手</CardDescription>
+                            </CardHeader>
+                        </Card>
+                    </motion.div>
                 </div>
             </div>
             <div>
@@ -301,8 +384,10 @@ function LandingContent() {
                             <ReviewCard key={review.version} {...review} />
                         ))}
                     </Marquee>
-                    <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
-                    <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
+                    <div
+                        className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
+                    <div
+                        className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
                 </div>
             </div>
             <div className="relative flex
@@ -318,12 +403,16 @@ function LandingContent() {
                 <div className={'flex gap-4'}>
                     <RainbowButton className={'font-semibold'} onClick={() => navigate('/login')}>
                         Demo
+                        <motion.div
+                            className="ml-2"
+                            variants={{
+                                hover: {x: 8}, // 当父组件触发 hover 时，箭头向右移动
+                            }}
+                            transition={{type: 'tween', duration: 0.3}} // 设置缓动效果
+                        >
+                            <IoIosArrowForward/>
+                        </motion.div>
                     </RainbowButton>
-                    <Button variant={"outline"} className={'gap-2 font-semibold'}
-                            onClick={() => window.open("https://github.com/pipijoe/xryder-web", "_blank")}>
-                        <FaGithub/>
-                        GitHub
-                    </Button>
                 </div>
             </div>
         </div>
