@@ -13,7 +13,6 @@ import {
     BreadcrumbList,
 } from "@/components/ui/breadcrumb";
 import {NavActions} from "@/components/nav-actions";
-import { alipayImg } from "@/utils"
 
 /**
  * @license MIT
@@ -65,6 +64,7 @@ JPA可以让我不写SQL，或者写很少很简单的SQL。这会提高工作�
 你可以通过这些方式跟我联系💫：
 
 - Email:  cutesimba@163.com
+- B站账号: [https://space.bilibili.com/412405219](https://space.bilibili.com/412405219) 欢迎关注！
 
 ----
 
@@ -120,15 +120,9 @@ const Home = () => {
                 >
                     {markdownContent}
                 </ReactMarkdown>
-                <h3 className={'text-xl'}>支持开源，共同进步! 🌱💡</h3>
-                <p>
-                    如果你觉得这个项目对你有帮助，欢迎通过捐赠支持我们继续改进和创新，共同打造更好的开源生态！
-                </p>
-                <img src={alipayImg} alt={'payment code'} width={300}/>
                 <h3 className={'text-xl mt-16'}>🎉One More Thing！</h3>
 
                 <p>云澜AI知识库，帮助团队沉淀知识，提供基于文档的AI问答功能，编辑时的文本润色，提供私有化部署方案。</p>
-                <p className={'text-sm text-secondary-foreground'}>感兴趣可以通过邮件联系：cutesimba@163.com</p>
                 <p>以下是视频演示：</p>
                 <div className="relative w-full h-0 pb-[56.25%]">
                     <iframe
@@ -136,7 +130,6 @@ const Home = () => {
                         scrolling="no" border="0" frameBorder="no" framespacing="0" allowFullScreen="true"
                         class="absolute top-0 left-0 w-full h-full"
                     >
-
                     </iframe>
                 </div>
             </div>

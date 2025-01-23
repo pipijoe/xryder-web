@@ -39,7 +39,9 @@ const LandingHeader = () => {
                             v1.1.6
                         </a>
                         <Button variant="ghost">
-                            指引
+                            <a href={"https://xryder.cn/guide/why.html"} target={'_blank'}>
+                                指引
+                            </a>
                         </Button>
                         <Separator orientation="vertical"/>
                         <ModeToggle />

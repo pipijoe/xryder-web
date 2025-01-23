@@ -76,24 +76,24 @@ const data = {
         },
         {
             title: "docs",
-            url: "/docs/introduction",
+            url: "#",
             icon: BookOpen,
             items: [
                 {
                     title: "简介",
-                    url: "/docs/introduction",
+                    url: "#",
                 },
                 {
                     title: "开始",
-                    url: "/docs/getstarted",
+                    url: "#",
                 },
                 {
                     title: "教程",
-                    url: "/docs/tutorials",
+                    url: "#",
                 },
                 {
                     title: "更新日志",
-                    url: "/docs/changelog",
+                    url: "#",
                 },
             ],
         },

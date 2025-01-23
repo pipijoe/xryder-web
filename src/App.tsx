@@ -19,10 +19,6 @@ import {AiChat} from "@/page/chat";
 import Monitor from "@/page/monitor";
 import Forbidden from "@/403";
 import ErrorPage from "@/500";
-import Introduction from "@/page/docs/introduction";
-import Start from "@/page/docs/start";
-import Tutorials from "@/page/docs/tutorials";
-import ChangeLog from "@/page/docs/changelog";
 import Home from "@/page/home";
 import PersonalSetting from "@/page/personal";
 import LandingPage from "@/page/landing";
@@ -54,10 +50,6 @@ function App() {
                             <Route path="/personal" element={<PersonalSetting />} />
                             <Route path="/chat" element={<AiChat />} />
                             <Route path="/monitor" element={<Monitor />} />
-                            <Route path="/docs/introduction" element={<Introduction />} />
-                            <Route path="/docs/getstarted" element={<Start />} />
-                            <Route path="/docs/tutorials" element={<Tutorials />} />
-                            <Route path="/docs/changelog" element={<ChangeLog />} />
                         </Routes>
                     </Layout>
                 </Router>

@@ -13,8 +13,8 @@ import BoxReveal from "@/components/magicui/box-reveal";
 import {Eye, EyeOff} from "lucide-react";
 
 function Login() {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('admin');
+    const [password, setPassword] = useState('admin123');
     const {login, isLoading, getPublicKey, publicKey} = useAuthStore();
     // 使用 useState 管理密码输入框的类型
     const [showPassword, setShowPassword] = useState(false);
@@ -135,6 +135,7 @@ function Login() {
                                     <Label htmlFor="password">密码</Label>
                                     <Input
                                         id="password"
+                                        value={password}
                                         type={showPassword ? "text" : "password"}
                                         onKeyDown={handleKeyDown}
                                         placeholder="输入密码..."
