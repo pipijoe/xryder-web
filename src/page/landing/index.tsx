@@ -16,6 +16,8 @@ const LandingPage = () => {
         <div>
             <Helmet>
                 <title>X.Ryder | AI时代的WEB开发模板</title>
+                <meta name="description" content="X.Ryder（莱德）是一个基于Java和React的轻量、灵活、具备AI功能的WEB开发模板。" />
+                <meta name="keywords" content="WEB框架, React, Java, Spring AI, 大模型, AI, 智能助手" />
             </Helmet>
             <LandingHeader />
             <LandingContent />

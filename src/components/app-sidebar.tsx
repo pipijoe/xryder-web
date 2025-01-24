@@ -81,19 +81,19 @@ const data = {
             items: [
                 {
                     title: "简介",
-                    url: "#",
+                    url: "https://xryder.cn/guide/why.html",
                 },
                 {
                     title: "开始",
-                    url: "#",
+                    url: "https://xryder.cn/guide/get-started.html",
                 },
                 {
-                    title: "教程",
-                    url: "#",
+                    title: "功能",
+                    url: "https://xryder.cn/guide/function.html",
                 },
                 {
-                    title: "更新日志",
-                    url: "#",
+                    title: "理念",
+                    url: "https://xryder.cn/guide/idea.html",
                 },
             ],
         },
