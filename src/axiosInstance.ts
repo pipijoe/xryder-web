@@ -23,7 +23,7 @@ api.interceptors.request.use(
         // 是否需要设置 token
         let isToken = true
         whiteList.some((v) => {
-            if (config.url && config.url == v) {
+            if (config.url && config.url?.startsWith(v)) {
                 return isToken = false
             }
         })
