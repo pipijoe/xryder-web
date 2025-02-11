@@ -40,7 +40,7 @@ const LandingHeader = () => {
                         </a>
                         <Button variant="ghost">
                             <a href={"https://xryder.cn/guide/why.html"} target={'_blank'}>
-                                指引
+                                开发指引
                             </a>
                         </Button>
                         <Separator orientation="vertical"/>

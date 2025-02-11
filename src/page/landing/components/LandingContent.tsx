@@ -211,10 +211,10 @@ function LandingContent() {
                   font-semibold leading-none
                   text-transparent dark:from-gray-100 dark:to-gray-200
                   drop-shadow-sm dark:drop-shadow-[0_2px_3px_rgba(255,255,255,0.3)]">
-    AI时代的WEB开发模板
+    AI时代的WEB开发框架
   </span>
-                <div className={'w-[360px] text-lg mt-4'}>
-                    X.Ryder（莱德）是一个基于Java和React的轻量、灵活、具备AI功能的WEB开发模板
+                <div className={'w-[400px] text-lg mt-4'}>
+                    一个基于Java和React的开源的轻量、灵活、具备AI功能的WEB开发框架，支持<span className={'font-bold'}>DeepSeek</span>。
                 </div>
                 <div className={'flex gap-4'}>
                     <RainbowButton className={'font-semibold'} onClick={() => navigate('/login')}>
@@ -343,7 +343,7 @@ function LandingContent() {
                             </CardContent>
                             <CardHeader>
                                 <CardTitle className={'border-l-4 border-sky-700 pl-2'}>自带AI</CardTitle>
-                                <CardDescription>内置智能对话助手</CardDescription>
+                                <CardDescription>内置智能对话助手，支持DeepSeek</CardDescription>
                             </CardHeader>
                         </Card>
                     </motion.div>
