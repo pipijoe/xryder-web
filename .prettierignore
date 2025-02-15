@@ -1,0 +1,6 @@
+.github
+.husky
+.vscode
+.typings
+dist
+node_modules
