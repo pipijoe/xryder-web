@@ -1,12 +1,9 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 
-import { HelmetProvider } from 'react-helmet-async'
-
 import Forbidden from '@/403'
 import ErrorPage from '@/500'
 import Login from '@/Login'
-import { ThemeProvider } from '@/components/theme-provider'
-import Layout from '@/layout'
+import { MainLayout, RootLayout } from '@/layouts'
 import Account from '@/page/account'
 import { AiChat } from '@/page/chat'
 import Dashboard from '@/page/dashboard'
@@ -31,39 +28,38 @@ import './App.css'
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <HelmetProvider>
-        <Router>
-          <Layout>
-            <Routes>
-              <Route path="/login" element={<Login />} />
-              <Route path="/" element={<Home />} />
-              <Route path="/welcome" element={<Home />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/403" element={<Forbidden />} />
-              <Route path="/500" element={<ErrorPage />} />
-              <Route path="/sys/users" element={<User />} />
-              <Route path="/sys/roles" element={<Role />} />
-              <Route path="/sys/department" element={<Department />} />
-              <Route path="/sys/position" element={<Position />} />
-              <Route path="/sys/mail" element={<SendingMails />} />
-              <Route path="/sys/mail/send" element={<MailSender />} />
-              <Route path="/sys/log" element={<Log />} />
-              <Route path="/sys/login-log" element={<LoginLog />} />
-              <Route path="/mail" element={<MailBox />} />
-              <Route path="/account" element={<Account />} />
-              <Route path="/personal" element={<PersonalSetting />} />
-              <Route path="/chat" element={<AiChat />} />
-              <Route path="/monitor" element={<Monitor />} />
-              <Route path="/docs/introduction" element={<Introduction />} />
-              <Route path="/docs/getstarted" element={<Start />} />
-              <Route path="/docs/tutorials" element={<Tutorials />} />
-              <Route path="/docs/changelog" element={<ChangeLog />} />
-            </Routes>
-          </Layout>
-        </Router>
-      </HelmetProvider>
-    </ThemeProvider>
+    <Router>
+      <Routes>
+        <Route element={<RootLayout />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/403" element={<Forbidden />} />
+          <Route path="/500" element={<ErrorPage />} />
+
+          <Route element={<MainLayout />}>
+            <Route index element={<Home />} />
+            <Route path="/welcome" element={<Home />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/sys/users" element={<User />} />
+            <Route path="/sys/roles" element={<Role />} />
+            <Route path="/sys/department" element={<Department />} />
+            <Route path="/sys/position" element={<Position />} />
+            <Route path="/sys/mail" element={<SendingMails />} />
+            <Route path="/sys/mail/send" element={<MailSender />} />
+            <Route path="/sys/log" element={<Log />} />
+            <Route path="/sys/login-log" element={<LoginLog />} />
+            <Route path="/mail" element={<MailBox />} />
+            <Route path="/account" element={<Account />} />
+            <Route path="/personal" element={<PersonalSetting />} />
+            <Route path="/chat" element={<AiChat />} />
+            <Route path="/monitor" element={<Monitor />} />
+            <Route path="/docs/introduction" element={<Introduction />} />
+            <Route path="/docs/getstarted" element={<Start />} />
+            <Route path="/docs/tutorials" element={<Tutorials />} />
+            <Route path="/docs/changelog" element={<ChangeLog />} />
+          </Route>
+        </Route>
+      </Routes>
+    </Router>
   )
 }
 
