@@ -1,0 +1,54 @@
+name: Build and Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["master"]
+    paths:
+      - "/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Set up Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+        
+      - name: Get Latest Tag
+        id: get_latest_tag
+        run: |
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v1.1.16")
+          echo "LATEST_TAG=${LATEST_TAG}" >> $GITHUB_ENV
+
+      - name: Calculate Next Version
+        id: calculate_next_version
+        run: |
+          BASE_VERSION="${{ env.LATEST_TAG }}"
+          NEXT_VERSION=$(echo $BASE_VERSION | awk -F. -v OFS=. '{$NF++; print}')
+          echo "NEXT_VERSION=${NEXT_VERSION}" >> $GITHUB_ENV
+          echo "NEXT_VERSION=${NEXT_VERSION}"
+          
+      - name: Get Commit Messages
+        id: get_commit_messages
+        run: |
+          COMMITS=$(git log -1 --pretty=format:"%s")
+          echo "COMMITS=${COMMITS}" >> $GITHUB_ENV
+          echo "COMMITS=${COMMITS}"
+
+      - name: Create Tag
+        run: |
+          git tag "${{ env.NEXT_VERSION }}"
+          git push origin --tags
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: ${{ env.NEXT_VERSION }}
+          name: "Release ${{ env.NEXT_VERSION }}"
+          body: ${{ env.COMMITS }}
