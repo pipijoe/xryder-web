@@ -23,7 +23,7 @@ api.interceptors.request.use(
         // 是否需要设置 token
         let isToken = true
         whiteList.some((v) => {
-            if (config.url && config.url?.startsWith(v)) {
+            if (config.url && config.url.startsWith(v)) {
                 return isToken = false
             }
         })
@@ -83,11 +83,6 @@ api.interceptors.response.use(
         if (ignoreMsgs.indexOf(msg) !== -1) {
             // 如果是忽略的错误码，直接返回 msg 异常
             return Promise.reject(msg)
-        }  // 检查自定义 code
-        else if (code === 400) {
-            const setError = useErrorStore.getState().setError;
-            setError(data.data || "请求参数错误");
-            return Promise.reject(new Error(data.data || "请求参数错误"));
         }
         else if (code === 405) {
             // 如果未认证，并且未进行刷新令牌，说明可能是访问令牌过期了
@@ -175,12 +170,15 @@ const handleAuthorized = () => {
 }
 
 const handleForbidden = () => {
-    window.location.href = '/403'
-    return Promise.reject('未授权访问！')
+    const setError = useErrorStore.getState().setError;
+    setError("未授权访问");
+    return Promise.reject(new Error("未授权访问"));
 }
 
 const handleError = () => {
-    // window.location.href = '/500'
+    const setError = useErrorStore.getState().setError;
+    setError("服务器异常");
+    return Promise.reject(new Error("服务器异常"));
 }
 
 export default api;
