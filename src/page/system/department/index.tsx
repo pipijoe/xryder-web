@@ -73,7 +73,6 @@ const Department = () => {
         })
     }
     const handleSearch = async (params: any) => {
-        console.log({params})
         queryDepartment(params)
     }
     return (
