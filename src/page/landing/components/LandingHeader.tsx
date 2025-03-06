@@ -36,7 +36,7 @@ const LandingHeader = () => {
                     </nav>
                     <div className="flex gap-1 ml-auto items-center space-x-2 h-6">
                         <a href={'https://github.com/pipijoe/xryder-web/releases'} target={'_blank'}>
-                            v1.1.8
+                            v1.1.9
                         </a>
                         <Button variant="ghost">
                             <a href={"https://xryder.cn/guide/why.html"} target={'_blank'}>
