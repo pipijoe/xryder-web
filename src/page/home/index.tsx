@@ -1,5 +1,5 @@
 import {getTheme} from "@/components/theme-provider";
-import React from "react";
+import React, {useEffect} from "react";
 import {Helmet} from "react-helmet-async";
 import Giscus from "@giscus/react";
 import {Prism as SyntaxHighlighter} from "react-syntax-highlighter";
@@ -14,6 +14,7 @@ import {
     BreadcrumbList,
 } from "@/components/ui/breadcrumb";
 import {NavActions} from "@/components/nav-actions";
+import GoogleAd from "@/components/google/GoogleAd";
 
 /**
  * @license MIT
@@ -74,12 +75,14 @@ JPA可以让我不写SQL，或者写很少很简单的SQL。这会提高工作�
 `;
 const Home = () => {
     const theme = getTheme(); // 获取当前主题
+
     return (
         <div className={`${theme === "dark" ? "prose-dark" : ""}`}>
             <Helmet>
                 <title>欢迎</title>
             </Helmet>
-            <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+            <header className="flex h-16 sticky top-0 shrink-0 items-center gap-2 border-b px-4
+            z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
                 <div className="flex flex-1 items-center gap-2 px-3">
                     <SidebarTrigger className="-ml-1"/>
                     <Separator orientation="vertical" className="mr-2 h-4"/>
@@ -121,6 +124,7 @@ const Home = () => {
                 >
                     {markdownContent}
                 </ReactMarkdown>
+                <GoogleAd />
                 <h3 className={'text-xl mt-16'}>🎉One More Thing！</h3>
 
                 <p>云澜AI知识库，帮助团队沉淀知识，提供基于文档的AI问答功能，编辑时的文本润色，提供私有化部署方案。</p>
