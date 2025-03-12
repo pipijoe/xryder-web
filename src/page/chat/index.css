@@ -8,6 +8,7 @@
 .markdown-body{
     max-width: 800px; /* 指定最大宽度 */
     overflow-x: auto; /* 当内容超过指定宽度时显示水平滚动条 */
+    margin-bottom: 80px;
 }
 .markdown-body h1 {
     @apply font-semibold text-xl leading-loose;

@@ -279,7 +279,7 @@ export function AiChat() {
             <Helmet>
                 <title>智能助手</title>
             </Helmet>
-            <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4" >
+            <header className="flex h-16 sticky top-0 shrink-0 items-center gap-2 border-b px-4 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
                 <div className="flex flex-1 items-center gap-2 px-3 ">
                     <SidebarTrigger className="-ml-1"/>
                     <Separator orientation="vertical" className="mr-2 h-4"/>
@@ -305,90 +305,88 @@ export function AiChat() {
                 </div>
             </header>
             <div className="flex justify-center">
-                <div className="w-full max-w-4xl flex flex-col h-[calc(100vh_-_theme(spacing.20))]">
-                    <ScrollArea className={`${messages.length > 0 ? "flex-1" : ""}`}>
-                        <div className="flex w-full flex-col rounded-xl p-2">
-                            {messages.map((msg, index) => (
-                                <div
-                                    key={index}
-                                    className={`max-w-3xl flex items-start select-text ${
-                                        msg.sender === 'user'
-                                            ? 'my-2 px-8 py-4 rounded-3xl self-end'
-                                            : 'my-2 p-2 self-start'
-                                    }`}
-                                >
-                                    {msg.sender === 'bot' && msg.avatar}
-                                    {msg.sender === 'bot' && messages.length == index + 1 && botState == 'thinking' &&
-                                        <div className={'mt-3'}>
-                                            <span className="relative flex h-4 w-4">
-                                              <span
-                                                  className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-200 opacity-75"></span>
-                                              <span
-                                                  className="relative inline-flex rounded-full h-4 w-4 bg-lime-400"></span>
-                                            </span>
+                <div className="w-full max-w-4xl">
+                    <div className="flex w-full flex-col rounded-xl p-2 pb-20 mb-4">
+                        {messages.map((msg, index) => (
+                            <div
+                                key={index}
+                                className={`max-w-3xl flex items-start select-text ${
+                                    msg.sender === 'user'
+                                        ? 'my-2 px-8 py-4 rounded-3xl self-end'
+                                        : 'my-2 p-2 self-start'
+                                }`}
+                            >
+                                {msg.sender === 'bot' && msg.avatar}
+                                {msg.sender === 'bot' && messages.length == index + 1 && botState == 'thinking' &&
+                                    <div className={'mt-3'}>
+                                        <span className="relative flex h-4 w-4">
+                                          <span
+                                              className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-200 opacity-75"></span>
+                                          <span
+                                              className="relative inline-flex rounded-full h-4 w-4 bg-lime-400"></span>
+                                        </span>
+                                    </div>
+                                }
+                                <div>
+                                    {msg.sender === 'user' ? (
+                                            <div>
+                                                {
+                                                    msg.docs.filter(f => !['png', 'jpeg', 'jpg'].includes(f.split('.').pop())).map((f: string, index) => (
+                                                        <div
+                                                            className='relative p-2 mb-2 mr-2 bg-foreground/25 rounded-xl'
+                                                            key={index}>
+                                                            <div className="flex  gap-2">
+                                                                <div className='flex-none relative'>
+                                                                    <img src={fileImg} alt="file"
+                                                                         className={`w-12 h-12 rounded-xl`}
+                                                                    />
+                                                                </div>
+                                                                <div>
+                                                                    <TooltipProvider>
+                                                                        <Tooltip>
+                                                                            <TooltipTrigger asChild>
+                                                                                <div
+                                                                                    className="w-64 overflow-hidden whitespace-nowrap text-ellipsis font-semibold">{f}</div>
+                                                                            </TooltipTrigger>
+                                                                            <TooltipContent>
+                                                                                {f}
+                                                                            </TooltipContent>
+                                                                        </Tooltip>
+                                                                    </TooltipProvider>
+                                                                    <div
+                                                                        className="text-token-text-tertiary">{f.split('.').pop()}</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>)
+                                                    )}
+                                                {
+                                                    msg.images.map((image, index) => (
+                                                        <img key={index} src={image} alt="Uploaded Preview"
+                                                             style={{maxWidth: "360px", height: "auto"}}
+                                                             className='mb-1'/>
+                                                    ))
+                                                }
+                                                <div className={'flex relative justify-end items-center'}>
+                                                    <div className='whitespace-pre-wrap'>{msg.text}</div>
+                                                    {msg.avatar}
+                                                </div>
+                                            </div>) :
+                                        <div>
+                                            <ReactMarkdown
+                                                className="markdown-body"
+                                                remarkPlugins={[remarkGfm]} // 使用remark-gfm插件
+                                                components={renderers}
+                                            >
+                                                {msg.text}
+                                            </ReactMarkdown>
                                         </div>
                                     }
-                                    <div>
-                                        {msg.sender === 'user' ? (
-                                                <div>
-                                                    {
-                                                        msg.docs.filter(f => !['png', 'jpeg', 'jpg'].includes(f.split('.').pop())).map((f: string, index) => (
-                                                            <div
-                                                                className='relative p-2 mb-2 mr-2 bg-foreground/25 rounded-xl'
-                                                                key={index}>
-                                                                <div className="flex  gap-2">
-                                                                    <div className='flex-none relative'>
-                                                                        <img src={fileImg} alt="file"
-                                                                             className={`w-12 h-12 rounded-xl`}
-                                                                        />
-                                                                    </div>
-                                                                    <div>
-                                                                        <TooltipProvider>
-                                                                            <Tooltip>
-                                                                                <TooltipTrigger asChild>
-                                                                                    <div
-                                                                                        className="w-64 overflow-hidden whitespace-nowrap text-ellipsis font-semibold">{f}</div>
-                                                                                </TooltipTrigger>
-                                                                                <TooltipContent>
-                                                                                    {f}
-                                                                                </TooltipContent>
-                                                                            </Tooltip>
-                                                                        </TooltipProvider>
-                                                                        <div
-                                                                            className="text-token-text-tertiary">{f.split('.').pop()}</div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>)
-                                                        )}
-                                                    {
-                                                        msg.images.map((image, index) => (
-                                                            <img key={index} src={image} alt="Uploaded Preview"
-                                                                 style={{maxWidth: "360px", height: "auto"}}
-                                                                 className='mb-1'/>
-                                                        ))
-                                                    }
-                                                    <div className={'flex relative justify-end items-center'}>
-                                                        <div className='whitespace-pre-wrap'>{msg.text}</div>
-                                                        {msg.avatar}
-                                                    </div>
-                                                </div>) :
-                                            <div>
-                                                <ReactMarkdown
-                                                    className="markdown-body"
-                                                    remarkPlugins={[remarkGfm]} // 使用remark-gfm插件
-                                                    components={renderers}
-                                                >
-                                                    {msg.text}
-                                                </ReactMarkdown>
-                                            </div>
-                                        }
-                                    </div>
                                 </div>
-                            ))}
-                            <div ref={messagesEndRef}/>
-                        </div>
-                    </ScrollArea>
-                    <div className={`${messages.length == 0 ? "my-auto" : ""}`}>
+                            </div>
+                        ))}
+                        <div ref={messagesEndRef}/>
+                    </div>
+                    <div className={`${messages.length == 0 ? "mt-40" : "fixed bottom-0 md:w-[840px]"}`}>
                         {messages.length == 0 &&
                             <div className={'flex flex-col items-center text-muted-foreground'}>
                                 <TypingAnimation
