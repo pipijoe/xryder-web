@@ -73,7 +73,7 @@ api.interceptors.response.use(
             response.request.responseType === 'arraybuffer'
         ) {
             if (response.data.type !== 'application/json') {
-                return response.data
+                return response
             }
             data = await new Response(response.data).json()
         }
