@@ -1,5 +1,5 @@
 import React from "react";
-
+import { zhipuImg } from '@/utils/'
 /**
  * @license MIT
  * Created by: joetao
@@ -13,11 +13,20 @@ function LandingFooter() {
 
     return (
         <div className={'border-t p-16'}>
-            <p className={'text-xl text-center'}><span className={'font-bold'}>X.Ryder</span> | 莱德</p>
-            <footer className={'text-center text-muted-foreground text-sm'}>
-                <p>email: cutesimba@163.com</p>
-                <p>&copy; {currentYear} X.Ryder All rights reserved.</p>
-                <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备2024137819号-1</a>
+
+            <footer>
+                <div className={'grid grid-cols-2'}>
+                    <div className={'text-center text-muted-foreground text-sm'}>
+                        <p className={'text-xl text-foreground'}><span className={'font-bold'}>X.Ryder</span> | 莱德</p>
+                        <p>email: cutesimba@163.com</p>
+                        <p>&copy; {currentYear} X.Ryder All rights reserved.</p>
+                        <a href="https://beian.miit.gov.cn/" target="_blank">苏ICP备2024137819号-1</a>
+                    </div>
+                    <div className={'text-center'}>
+                        <a href={'https://www.zhipuai.cn/'}><img src={zhipuImg} alt={`智普AI Logo`} width={86} height={32} className="inline mr-2 " /></a>
+                    </div>
+                </div>
+
             </footer>
         </div>
     )

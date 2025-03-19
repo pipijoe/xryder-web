@@ -3,6 +3,7 @@ import empty from '../assets/empty.png'
 import file from '../assets/file.png'
 import image from '../assets/image.png'
 import agent from '../assets/agent.svg'
+import zhipu from "../assets/zhipu.svg";
 import vite from '../assets/vite.svg'
 import chatbot from '../assets/chatbot.png'
 import tailscn from '../assets/tailscn.png'
@@ -27,6 +28,7 @@ export const design02Img = design02
 export const design03Img = design03
 export const design04Img = design04
 export const design05Img = design05
+export const zhipuImg = zhipu;
 import { JSEncrypt } from 'jsencrypt';
 
 export const encryptPassword = (password, publicKey) => {
